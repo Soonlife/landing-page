@@ -1,0 +1,317 @@
+/*
+    terms.css
+    약관 페이지. index.css의 토큰·헤더·바닥글을 그대로 쓰고 본문만 문서형으로 정리함
+*/
+
+/* 약관은 복사해 가는 일이 많아서 root.css의 선택 막기를 풂 */
+.Legal {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: clamp(56px, 8vw, 96px) var(--pageGutter) var(--sectionSpace);
+    user-select: text;
+    -webkit-user-select: text;
+    word-break: keep-all;
+}
+
+.LegalHead {
+    text-align: center;
+}
+
+.LegalTitle {
+    margin-top: 12px;
+    font-size: clamp(2rem, 1.5rem + 2vw, 2.75rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+}
+
+.LegalMeta {
+    margin-top: 12px;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: var(--subText);
+}
+
+/* 목차 */
+.LegalToc {
+    margin-top: clamp(40px, 6vw, 56px);
+    padding: 24px 28px;
+    border-radius: 24px;
+    background: var(--secondaryBackground);
+}
+
+.LegalTocTitle {
+    font-size: 0.9375rem;
+    font-weight: 700;
+    color: var(--faintText);
+}
+
+.LegalToc ol {
+    display: grid;
+    gap: 8px 24px;
+    margin-top: 12px;
+}
+
+.LegalToc a {
+    font-weight: 600;
+    color: var(--primaryText);
+    transition: color 0.2s;
+}
+
+.LegalToc a:hover {
+    color: var(--blue);
+}
+
+@media (min-width: 640px) {
+    .LegalToc ol {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* 장 · 조 */
+.LegalChapter {
+    margin-top: clamp(48px, 7vw, 72px);
+}
+
+.LegalChapter h2 {
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--hairline);
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+}
+
+.LegalChapter article {
+    margin-top: 32px;
+    scroll-margin-top: 96px;
+}
+
+.LegalChapter h3 {
+    font-size: 1.125rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+}
+
+.LegalChapter p,
+.LegalChapter li {
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.75;
+    color: color-mix(in srgb, var(--primaryText) 80%, transparent);
+}
+
+.LegalChapter h3 + p,
+.LegalChapter h3 + ol {
+    margin-top: 10px;
+}
+
+.LegalChapter p + ol,
+.LegalChapter ol + p {
+    margin-top: 8px;
+}
+
+/* 항: ①②③ */
+.Circled {
+    counter-reset: circled;
+    display: grid;
+    gap: 8px;
+}
+
+.Circled > li {
+    position: relative;
+    padding-left: 1.6em;
+    counter-increment: circled;
+}
+
+.Circled > li::before {
+    position: absolute;
+    left: 0;
+    content: counter(circled);
+    display: grid;
+    place-items: center;
+    width: 1.15em;
+    height: 1.15em;
+    margin-top: 0.3em;
+    border: 1px solid currentColor;
+    border-radius: 50%;
+    font-size: 0.85em;
+    font-weight: 600;
+    line-height: 1;
+}
+
+/* 호: 1. 2. 3. */
+.Numbered {
+    counter-reset: numbered;
+    display: grid;
+    gap: 4px;
+    margin-top: 6px;
+}
+
+.Numbered > li {
+    position: relative;
+    padding-left: 1.8em;
+    counter-increment: numbered;
+}
+
+.Numbered > li::before {
+    position: absolute;
+    left: 0;
+    content: counter(numbered) '.';
+    font-weight: 600;
+}
+
+.Plain {
+    margin-top: 6px;
+    padding-left: 1.6em;
+}
+
+/* 아직 채우지 않은 자리 (운영자명, 시행일 등) */
+.Placeholder {
+    padding: 0 0.25em;
+    border-radius: 0.3em;
+    background: color-mix(in srgb, var(--yellow) 30%, transparent);
+    color: inherit;
+}
+
+/* 운영자 정보 */
+.LegalOperator {
+    margin-top: clamp(56px, 8vw, 80px);
+    padding: 24px 28px;
+    border-radius: 24px;
+    background: var(--secondaryBackground);
+}
+
+.LegalOperatorTitle {
+    font-size: 0.9375rem;
+    font-weight: 700;
+    color: var(--faintText);
+}
+
+.LegalOperator dl {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 8px 24px;
+    margin-top: 12px;
+}
+
+.LegalOperator dt {
+    font-weight: 600;
+    color: var(--subText);
+}
+
+.LegalOperator dd {
+    font-weight: 500;
+}
+
+/* 개인정보처리방침: 머리말 · 요약 · 표 */
+.LegalIntro {
+    margin-top: clamp(40px, 6vw, 56px);
+}
+
+.LegalIntro p {
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.75;
+    color: color-mix(in srgb, var(--primaryText) 80%, transparent);
+}
+
+.LegalSummary {
+    margin-top: 24px;
+    padding: 24px 28px;
+    border-radius: 24px;
+    background: color-mix(in srgb, var(--blue) 8%, var(--secondaryBackground));
+}
+
+.LegalSummary ul {
+    display: grid;
+    gap: 10px;
+    margin-top: 12px;
+}
+
+.LegalSummary li {
+    display: grid;
+    grid-template-columns: 9em 1fr;
+    gap: 12px;
+    line-height: 1.6;
+    color: var(--subText);
+}
+
+.LegalSummary strong {
+    font-weight: 700;
+    color: var(--primaryText);
+}
+
+@media (max-width: 560px) {
+    .LegalSummary li {
+        grid-template-columns: 1fr;
+        gap: 2px;
+    }
+}
+
+.LegalChapter strong {
+    font-weight: 700;
+    color: var(--primaryText);
+}
+
+.LegalChapter a,
+.LegalIntro a {
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+/* 표는 좁은 화면에서 가로로 밀어 봄 */
+.LegalTableWrap {
+    margin: 14px 0;
+    overflow-x: auto;
+    border: 1px solid var(--hairline);
+    border-radius: 16px;
+}
+
+.LegalTable {
+    width: 100%;
+    min-width: 560px;
+    font-size: 0.9375rem;
+    line-height: 1.6;
+}
+
+.LegalTable th,
+.LegalTable td {
+    padding: 12px 14px;
+    border-bottom: 1px solid var(--hairline);
+    text-align: left;
+    vertical-align: top;
+}
+
+.LegalTable th {
+    background: var(--secondaryBackground);
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.LegalTable td {
+    color: color-mix(in srgb, var(--primaryText) 80%, transparent);
+}
+
+.LegalTable tr:last-child td {
+    border-bottom: none;
+}
+
+.LegalTable td:first-child {
+    font-weight: 600;
+    color: var(--primaryText);
+}
+
+.Muted {
+    font-size: 0.85em;
+    font-weight: 500;
+    color: var(--faintText);
+}
+
+.LegalOperator.isInline {
+    margin: 14px 0;
+}
+
+/* 개인정보처리방침 링크는 눈에 띄게 (관례) */
+.FooterLinks a.isStrong {
+    font-weight: 800;
+    color: var(--primaryText);
+}

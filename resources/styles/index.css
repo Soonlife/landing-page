@@ -1,0 +1,1288 @@
+/*
+    index.css
+    homepage
+
+    Created by Js Na on 2026/10/14.
+    Copyright © 2026 Js Na. All rights reserved.
+*/
+
+/* 랜딩 페이지 공통 값. 색은 color.css의 토큰에서 파생해서 라이트/다크 모드를 따라감 */
+:root {
+    --pageMaxWidth: 1120px;
+    --pageGutter: clamp(20px, 5vw, 40px);
+    --sectionSpace: clamp(104px, 14vw, 176px);
+    --subText: color-mix(in srgb, var(--primaryText) 62%, transparent);
+    --faintText: color-mix(in srgb, var(--primaryText) 40%, transparent);
+    --hairline: color-mix(in srgb, var(--primaryText) 10%, transparent);
+    --accentTint: color-mix(in srgb, var(--blue) 12%, transparent);
+    --easeOut: cubic-bezier(0.22, 1, 0.36, 1);
+    scroll-padding-top: 80px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    :root {
+        scroll-behavior: smooth;
+    }
+}
+
+/* root.css의 height: 100%를 풀어야 상단 바가 페이지 끝까지 붙어 있음 */
+body {
+    height: auto;
+    min-height: 100%;
+    font-family: 'Pretendard GOV', sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* 워드마크: 「순」, 서비스 이름처럼 로고에 해당하는 부분만 산토끼체 */
+.SoonWordmark {
+    font-family: 'HSSanTokki2.0', sans-serif;
+    font-weight: 400;
+}
+
+.SoonAccent {
+    color: var(--blue);
+}
+
+/* 아이콘 (Tabler Icons 라인 아이콘). 크기는 글자 크기, 색은 글자색을 따름 */
+.IconSprite {
+    position: absolute;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+}
+
+.Icon {
+    flex: none;
+    width: 1em;
+    height: 1em;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.75;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* 버튼 */
+.Button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 56px;
+    padding: 0 28px;
+    border-radius: 16px;
+    font-size: 1.0625rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    white-space: nowrap;
+    transition: background-color 0.2s, scale 0.2s var(--easeOut);
+}
+
+.Button:active {
+    scale: 0.96;
+}
+
+.Button.isPrimary {
+    background: var(--blue);
+    color: #fff;
+}
+
+.Button.isPrimary:hover {
+    background: color-mix(in srgb, var(--blue) 86%, #000);
+}
+
+.Button.isSecondary {
+    background: var(--accentTint);
+    color: var(--blue);
+}
+
+.Button.isSecondary:hover {
+    background: color-mix(in srgb, var(--blue) 18%, transparent);
+}
+
+.Button.isSmall {
+    height: 38px;
+    padding: 0 16px;
+    border-radius: 11px;
+    font-size: 0.9375rem;
+}
+
+/* 상단 바: 반투명하게 뒤를 흐리고, 스크롤을 내리면 아래 경계선이 서서히 나타남 */
+.SiteHeader {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: color-mix(in srgb, var(--primaryBackground) 78%, transparent);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    backdrop-filter: saturate(180%) blur(20px);
+    border-bottom: 1px solid var(--hairline);
+}
+
+@supports (animation-timeline: scroll()) {
+    .SiteHeader {
+        animation: SiteHeaderBorder linear both;
+        animation-timeline: scroll();
+        animation-range: 0 80px;
+    }
+}
+
+@keyframes SiteHeaderBorder {
+    from {
+        border-bottom-color: transparent;
+    }
+}
+
+.SiteHeaderInner {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    max-width: var(--pageMaxWidth);
+    height: 64px;
+    margin: 0 auto;
+    padding: 0 var(--pageGutter);
+}
+
+.HeaderLogo {
+    font-size: 1.5rem;
+    color: var(--primaryText);
+}
+
+.HeaderNav {
+    display: none;
+    gap: 28px;
+    margin-left: 16px;
+}
+
+.HeaderNav a {
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: var(--subText);
+    transition: color 0.2s;
+}
+
+.HeaderNav a:hover {
+    color: var(--primaryText);
+}
+
+.SiteHeaderInner .Button {
+    margin-left: auto;
+}
+
+@media (min-width: 900px) {
+    .HeaderNav {
+        display: flex;
+    }
+}
+
+/* 첫 화면 */
+.Hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: clamp(64px, 10vw, 120px) var(--pageGutter) 0;
+    text-align: center;
+    overflow: clip;
+}
+
+.HeroWordmark {
+    font-size: clamp(2.5rem, 1.9rem + 2.6vw, 4rem);
+    line-height: 1.3;
+}
+
+.HeroTitle {
+    margin-top: 20px;
+    font-size: clamp(2.25rem, 1.35rem + 3.8vw, 4.5rem);
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -0.035em;
+}
+
+.HeroDescription {
+    margin-top: 24px;
+    font-size: clamp(1.0625rem, 0.98rem + 0.4vw, 1.3125rem);
+    font-weight: 500;
+    line-height: 1.65;
+    color: var(--subText);
+    text-wrap: balance;
+}
+
+/* 좁은 화면에서는 강제 줄바꿈 대신 줄 길이를 고르게 맞춰 한 단어만 떨어지지 않게 함 */
+@media (max-width: 640px) {
+    .HeroDescription br {
+        display: none;
+    }
+}
+
+.HeroActions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 40px;
+}
+
+/* 휴대폰은 위쪽 70%쯤만 보이고 아래는 바탕으로 사라지게 함 */
+.HeroVisual {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    max-width: var(--pageMaxWidth);
+    height: clamp(440px, 58vw, 620px);
+    margin-top: clamp(56px, 8vw, 96px);
+    mask-image: linear-gradient(to bottom, #000 68%, transparent);
+}
+
+.HeroWordmark,
+.HeroTitle,
+.HeroDescription,
+.HeroActions,
+.HeroVisual {
+    animation: HeroEnter 1.1s var(--easeOut) both;
+}
+
+.HeroTitle {
+    animation-delay: 0.08s;
+}
+
+.HeroDescription {
+    animation-delay: 0.16s;
+}
+
+.HeroActions {
+    animation-delay: 0.24s;
+}
+
+.HeroVisual {
+    animation-delay: 0.36s;
+}
+
+@keyframes HeroEnter {
+    from {
+        opacity: 0;
+        translate: 0 28px;
+        filter: blur(6px);
+    }
+}
+
+/* 첫 화면 옆에 떠 있는 작은 카드 (넓은 화면에서만) */
+.FloatingCard {
+    position: absolute;
+    z-index: 1;
+    display: none;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 20px 14px 14px;
+    border-radius: 20px;
+    background: color-mix(in srgb, var(--tertiaryBackground) 88%, transparent);
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 1px 2px rgb(0 0 0 / 0.04), 0 16px 40px rgb(0 0 0 / 0.12);
+    text-align: left;
+    animation: FloatingBob 6s ease-in-out infinite alternate;
+}
+
+.FloatingCard.isLeft {
+    top: 112px;
+    right: calc(50% + 196px);
+}
+
+.FloatingCard.isRight {
+    top: 264px;
+    left: calc(50% + 196px);
+    animation-delay: -3s;
+}
+
+.FloatingCardIcon {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 14px;
+    background: var(--accentTint);
+    font-size: 1.5rem;
+    color: var(--blue);
+}
+
+.FloatingCardText {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    font-size: 0.875rem;
+    color: var(--subText);
+}
+
+.FloatingCardText strong {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--primaryText);
+}
+
+@media (min-width: 1000px) {
+    .FloatingCard {
+        display: flex;
+    }
+}
+
+@keyframes FloatingBob {
+    to {
+        translate: 0 -10px;
+    }
+}
+
+/* 휴대폰 목업. 안쪽 글자 크기는 휴대폰 폭에 비례 (컨테이너 단위) */
+.Phone {
+    container-type: inline-size;
+    flex: none;
+    width: min(340px, 78vw);
+    aspect-ratio: 9 / 19.5;
+    padding: 12px;
+    border-radius: 56px;
+    background: #0b0b0c;
+    box-shadow: inset 0 0 0 1.5px var(--gray3), 0 40px 80px rgb(0 0 0 / 0.16);
+}
+
+.PhoneScreen {
+    height: 100%;
+    overflow: hidden;
+    border-radius: 44px;
+    background: var(--primaryGroupedBackground);
+    color: var(--primaryText);
+    font-size: calc(100cqi / 25);
+    text-align: left;
+    --appCardBackground: var(--secondaryGroupedBackground);
+    --appFill: var(--primaryGroupedBackground);
+}
+
+.PhoneStatusBar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2em 2.4em 0.4em;
+    font-weight: 700;
+}
+
+.PhoneBattery {
+    position: relative;
+    width: 1.9em;
+    height: 0.95em;
+    border: 1.5px solid currentColor;
+    border-radius: 0.3em;
+    opacity: 0.85;
+}
+
+.PhoneBattery::after {
+    content: '';
+    position: absolute;
+    inset: 1.5px 30% 1.5px 1.5px;
+    border-radius: 0.15em;
+    background: currentColor;
+}
+
+.HomeHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.9em 1.4em 0.9em;
+}
+
+.HomeMenuIcon {
+    display: flex;
+    flex-direction: column;
+    gap: 0.32em;
+    width: 1.3em;
+}
+
+.HomeMenuIcon i {
+    height: 2px;
+    border-radius: 2px;
+    background: currentColor;
+}
+
+.HomeMenuIcon i:last-child {
+    width: 65%;
+}
+
+.HomeLogo {
+    font-size: 1.2em;
+}
+
+.HomeLogin {
+    padding: 0.35em 0.85em;
+    border-radius: 999px;
+    background: var(--appCardBackground);
+    font-size: 0.85em;
+    font-weight: 700;
+}
+
+.HomeContent {
+    display: grid;
+    gap: 1.6em;
+    padding: 0 1em;
+}
+
+.HomeAsk {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2.4em 0.2em 0;
+    text-align: center;
+}
+
+.HomeAskTitle {
+    font-size: 1.75em;
+    font-weight: 800;
+    line-height: 1.3;
+    letter-spacing: -0.03em;
+}
+
+.HomeAskSub {
+    margin-top: 0.6em;
+    font-size: 0.88em;
+    font-weight: 500;
+    color: var(--subText);
+}
+
+.HomeComposer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-top: 1.5em;
+    padding: 0.5em 0.5em 0.5em 1.1em;
+    border-radius: 999px;
+    background: var(--appCardBackground);
+    box-shadow: 0 1px 3px rgb(0 0 0 / 0.06);
+    font-size: 0.92em;
+    font-weight: 500;
+    color: var(--faintText);
+}
+
+.HomeComposer .Icon {
+    stroke-width: 2.25;
+}
+
+.HomeComposer i {
+    display: grid;
+    place-items: center;
+    width: 2.1em;
+    height: 2.1em;
+    border-radius: 50%;
+    background: var(--blue);
+    font-style: normal;
+    font-weight: 800;
+    color: #fff;
+}
+
+.HomeSuggestions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.4em;
+    margin-top: 1em;
+}
+
+.HomeSuggestions span {
+    padding: 0.45em 0.85em;
+    border: 1px solid var(--hairline);
+    border-radius: 999px;
+    background: var(--appCardBackground);
+    font-size: 0.8em;
+    font-weight: 600;
+    white-space: nowrap;
+    color: var(--subText);
+}
+
+.HomeNotices ul {
+    display: grid;
+    margin-top: 0.2em;
+}
+
+.HomeNotices li {
+    display: flex;
+    align-items: center;
+    gap: 0.6em;
+    padding: 0.65em 0;
+    border-bottom: 1px solid var(--hairline);
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.HomeNotices li:last-child {
+    border-bottom: none;
+}
+
+/* 공지 분류 꼬리표 (학사, 장학 등) */
+.HomeNotices b,
+.ChatSource b {
+    flex: none;
+    padding: 0.15em 0.5em;
+    border-radius: 0.4em;
+    background: var(--accentTint);
+    font-size: 0.78em;
+    font-weight: 700;
+    color: var(--blue);
+}
+
+/* 앱 화면 카드와 공통 조각 */
+.AppCard {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2em;
+    padding: 1.1em 1.25em;
+    border-radius: 1.3em;
+    background: var(--appCardBackground);
+}
+
+.AppCardLabel {
+    font-size: 0.85em;
+    font-weight: 600;
+    color: var(--faintText);
+}
+
+.AppCardMeta {
+    font-size: 0.88em;
+    font-weight: 500;
+    color: var(--subText);
+}
+
+.Chip {
+    padding: 0.45em 0.95em;
+    border-radius: 999px;
+    background: var(--appFill);
+    font-size: 0.86em;
+    font-weight: 600;
+    white-space: nowrap;
+    color: var(--subText);
+}
+
+.Chip.isActive {
+    background: var(--primaryText);
+    color: var(--primaryBackground);
+}
+
+.ChipRow {
+    display: flex;
+    gap: 0.4em;
+    overflow: hidden;
+}
+
+.Segmented {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 1fr;
+    padding: 0.25em;
+    border-radius: 0.9em;
+    background: var(--appFill);
+}
+
+.Segmented span {
+    padding: 0.55em 0.4em;
+    border-radius: 0.7em;
+    font-size: 0.9em;
+    font-weight: 600;
+    text-align: center;
+    white-space: nowrap;
+    color: var(--faintText);
+}
+
+.Segmented .isActive {
+    background: var(--appCardBackground);
+    color: var(--primaryText);
+    box-shadow: 0 1px 3px rgb(0 0 0 / 0.08);
+}
+
+.CardLink {
+    margin-top: 0.4em;
+    font-size: 0.92em;
+    font-weight: 600;
+    color: var(--featureAccent, var(--blue));
+}
+
+.CardLink::after {
+    content: ' →';
+}
+
+/* 기능 소개 머리말 */
+.Overview {
+    max-width: var(--pageMaxWidth);
+    margin: 0 auto;
+    padding: var(--sectionSpace) var(--pageGutter) 0;
+}
+
+.SectionHead {
+    text-align: center;
+}
+
+.SectionEyebrow {
+    font-size: 1.0625rem;
+    font-weight: 700;
+    color: var(--blue);
+}
+
+.SectionTitle {
+    margin-top: 16px;
+    font-size: clamp(2rem, 1.35rem + 2.6vw, 3.25rem);
+    font-weight: 800;
+    line-height: 1.25;
+    letter-spacing: -0.03em;
+}
+
+/* 기능 모아 보기: 넓은 화면 3열, 중간 2열, 좁은 화면 1열 */
+.Bento {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-top: clamp(48px, 7vw, 80px);
+}
+
+.BentoTile {
+    display: flex;
+    flex-direction: column;
+    padding: clamp(28px, 3vw, 36px);
+    border-radius: 28px;
+    background: var(--secondaryBackground);
+    color: var(--primaryText);
+}
+
+/* 등장 효과(translate)와 겹치지 않게 마우스를 올렸을 때는 transform으로 띄움 */
+.BentoTile,
+.hasReveal .BentoTile.Reveal {
+    transition: opacity 1s var(--easeOut) var(--revealDelay, 0s), translate 1s var(--easeOut) var(--revealDelay, 0s), transform 0.4s var(--easeOut), background-color 0.2s;
+}
+
+a.BentoTile:hover {
+    transform: translateY(-4px);
+    background: color-mix(in srgb, var(--secondaryBackground) 92%, var(--primaryText));
+}
+
+a.BentoTile::after {
+    content: '자세히 보기 →';
+    margin-top: auto;
+    padding-top: 24px;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--blue);
+}
+
+/* 타일마다 --iconColor를 옅게 깐 둥근 사각형 위에 같은 색 아이콘 */
+.BentoIcon {
+    display: grid;
+    place-items: center;
+    width: 52px;
+    height: 52px;
+    border-radius: 16px;
+    background: color-mix(in srgb, var(--iconColor, var(--blue)) 14%, transparent);
+    font-size: 28px;
+    color: var(--iconColor, var(--blue));
+}
+
+.BentoTitle {
+    margin-top: 20px;
+    font-size: 1.375rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+.BentoDescription {
+    margin-top: 8px;
+    font-size: 1.0625rem;
+    font-weight: 500;
+    color: var(--subText);
+}
+
+.BentoPoints {
+    display: grid;
+    gap: 10px;
+    margin-top: 24px;
+}
+
+.BentoPoints li,
+.FeaturePoints li {
+    position: relative;
+    padding-left: 30px;
+    font-weight: 500;
+    line-height: 1.55;
+    color: var(--subText);
+}
+
+.BentoPoints li::before,
+.FeaturePoints li::before {
+    content: '✓';
+    position: absolute;
+    top: 0.2em;
+    left: 0;
+    display: grid;
+    place-items: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: color-mix(in srgb, var(--featureAccent, var(--blue)) 14%, transparent);
+    font-size: 0.75rem;
+    font-weight: 800;
+    color: var(--featureAccent, var(--blue));
+}
+
+@media (min-width: 640px) {
+    .Bento {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .BentoTile.isWide:first-child {
+        grid-column: span 2;
+    }
+}
+
+@media (min-width: 960px) {
+    .Bento {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .BentoTile.isWide {
+        grid-column: span 2;
+    }
+
+    .BentoTile.isWide:first-child .BentoPoints {
+        grid-template-columns: 1fr 1fr;
+        column-gap: 24px;
+    }
+}
+
+/* 기능 하나씩: 넓은 화면에서는 글과 화면을 좌우로, 섹션마다 방향을 바꿈 */
+.Feature {
+    display: grid;
+    /* 줄바꿈 없는 글(공지 제목 등)이 칸을 화면 밖으로 늘리지 않게 최소 폭을 0으로 */
+    grid-template-columns: minmax(0, 1fr);
+    align-items: center;
+    gap: 48px;
+    max-width: var(--pageMaxWidth);
+    margin: 0 auto;
+    padding: var(--sectionSpace) var(--pageGutter) 0;
+}
+
+.FeatureEyebrow {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1.0625rem;
+    font-weight: 700;
+    color: var(--featureAccent);
+}
+
+.FeatureEyebrow .Icon {
+    font-size: 1.25em;
+    stroke-width: 2;
+}
+
+.FeatureTitle {
+    margin-top: 16px;
+    font-size: clamp(2rem, 1.4rem + 2.4vw, 3.125rem);
+    font-weight: 800;
+    line-height: 1.25;
+    letter-spacing: -0.03em;
+}
+
+.FeaturePoints {
+    display: grid;
+    gap: 14px;
+    margin-top: 32px;
+    font-size: 1.0625rem;
+}
+
+.FeatureVisual {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    place-items: center;
+    min-height: clamp(400px, 48vw, 520px);
+    padding: clamp(24px, 4vw, 48px);
+    border-radius: 36px;
+    background: var(--secondaryBackground);
+    overflow: hidden;
+    font-size: clamp(14px, 0.85rem + 0.25vw, 16px);
+    --appCardBackground: var(--tertiaryBackground);
+    --appFill: var(--secondaryBackground);
+}
+
+/* 기능 색을 아주 옅게 깔아 섹션마다 분위기를 다르게 */
+.FeatureVisual::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 70% 20%, color-mix(in srgb, var(--featureAccent) 16%, transparent), transparent 60%);
+    pointer-events: none;
+}
+
+.VisualCard {
+    position: relative;
+    width: min(360px, 100%);
+    padding: 1.4em;
+    gap: 0.6em;
+    box-shadow: 0 1px 2px rgb(0 0 0 / 0.04), 0 20px 48px rgb(0 0 0 / 0.1);
+}
+
+@media (min-width: 900px) {
+    .Feature {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+        gap: 80px;
+    }
+
+    /* 좌우를 바꿔도 화면 쪽이 넓은 칸에 오도록 */
+    .Feature.isReversed {
+        grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    }
+
+    .Feature.isReversed .FeatureText {
+        order: 2;
+    }
+}
+
+/* 학식 */
+.MealHeading {
+    font-size: 1.5em;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.3;
+}
+
+.MealMenu {
+    display: grid;
+    gap: 0.55em;
+    margin-top: 0.2em;
+}
+
+.MealMenu li {
+    display: flex;
+    align-items: center;
+    gap: 0.6em;
+    font-size: 1.05em;
+    font-weight: 600;
+}
+
+.MealMenu li::before {
+    content: '';
+    width: 0.4em;
+    height: 0.4em;
+    border-radius: 50%;
+    background: var(--featureAccent);
+}
+
+.WeekStrip {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.8em;
+    padding-top: 1em;
+    border-top: 1px solid var(--hairline);
+}
+
+.WeekStrip span {
+    display: grid;
+    place-items: center;
+    width: 2.3em;
+    height: 2.3em;
+    border-radius: 50%;
+    font-size: 0.92em;
+    font-weight: 700;
+    color: var(--faintText);
+}
+
+.WeekStrip .isToday {
+    background: var(--featureAccent);
+    color: #fff;
+}
+
+.MealLabel {
+    margin-top: 0.4em;
+    font-size: 0.85em;
+    font-weight: 700;
+    color: var(--featureAccent);
+}
+
+/* 학사 일정 */
+.ScheduleHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ScheduleHeader strong {
+    font-size: 1.4em;
+    font-weight: 800;
+}
+
+.ScheduleNav {
+    display: flex;
+    gap: 0.3em;
+}
+
+.ScheduleNav i {
+    display: grid;
+    place-items: center;
+    width: 1.9em;
+    height: 1.9em;
+    border-radius: 50%;
+    background: var(--appFill);
+    font-style: normal;
+    font-weight: 700;
+    color: var(--subText);
+}
+
+.ScheduleGroup {
+    margin-top: 0.4em;
+    font-size: 0.85em;
+    font-weight: 700;
+    color: var(--faintText);
+}
+
+.ScheduleList {
+    display: grid;
+    gap: 0.3em;
+}
+
+/* 일정 종류 색(--eventColor)을 왼쪽 막대와 날짜, 옅은 바탕에 씀 */
+.ScheduleList li {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.8em;
+    padding: 0.75em 0.9em 0.75em 1.2em;
+    border-radius: 0.9em;
+    background: color-mix(in srgb, var(--eventColor) 9%, transparent);
+    font-weight: 600;
+}
+
+.ScheduleList li::before {
+    content: '';
+    position: absolute;
+    top: 0.7em;
+    bottom: 0.7em;
+    left: 0.5em;
+    width: 3px;
+    border-radius: 3px;
+    background: var(--eventColor);
+}
+
+.ScheduleList time {
+    font-size: 0.88em;
+    font-weight: 700;
+    white-space: nowrap;
+    color: var(--eventColor);
+}
+
+.ScheduleLegend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4em 1em;
+    margin-top: 0.5em;
+    padding-top: 0.9em;
+    border-top: 1px solid var(--hairline);
+}
+
+.ScheduleLegend li {
+    display: flex;
+    align-items: center;
+    gap: 0.4em;
+    font-size: 0.82em;
+    font-weight: 600;
+    color: var(--subText);
+}
+
+.ScheduleLegend li::before {
+    content: '';
+    width: 0.6em;
+    height: 0.6em;
+    border-radius: 50%;
+    background: var(--eventColor);
+}
+
+/* 공지 */
+.NoticeHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.NoticeHeader strong {
+    font-size: 1.4em;
+    font-weight: 800;
+}
+
+.NoticeSearch {
+    display: grid;
+    place-items: center;
+    width: 2.1em;
+    height: 2.1em;
+    border-radius: 50%;
+    background: var(--appFill);
+    font-size: 1.05em;
+    color: var(--subText);
+}
+
+/* 칩이 넘치면 오른쪽 끝을 흐려서 옆으로 더 있다는 느낌을 줌 */
+.NoticeCard .ChipRow {
+    mask-image: linear-gradient(to right, #000 80%, transparent);
+}
+
+.NoticeList li {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.25em;
+    padding: 0.85em 0;
+    border-bottom: 1px solid var(--hairline);
+}
+
+.NoticeList li:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.NoticeTitle,
+.NoticeSummary {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.NoticeTitle {
+    font-weight: 700;
+}
+
+.NoticeSummary {
+    font-size: 0.88em;
+    font-weight: 500;
+    color: var(--subText);
+}
+
+.NoticeMeta {
+    display: flex;
+    align-items: center;
+    gap: 0.6em;
+    font-size: 0.8em;
+    font-weight: 600;
+    color: var(--faintText);
+}
+
+/* 순라이프 AI */
+.ChatCard {
+    gap: 0.7em;
+}
+
+.ChatBubble {
+    align-self: flex-start;
+    max-width: 82%;
+    padding: 0.75em 1em;
+    border-radius: 1.2em 1.2em 1.2em 0.4em;
+    background: var(--appFill);
+    font-family: inherit;
+    font-weight: 500;
+    line-height: 1.5;
+}
+
+.ChatBubble.isMine {
+    align-self: flex-end;
+    border-radius: 1.2em 1.2em 0.4em 1.2em;
+    background: var(--featureAccent);
+    color: #fff;
+}
+
+.ChatTrace {
+    display: flex;
+    gap: 0.4em;
+    font-size: 0.82em;
+    font-weight: 600;
+    color: var(--faintText);
+}
+
+.ChatTrace::before {
+    content: '✓';
+    font-weight: 800;
+    color: var(--featureAccent);
+}
+
+.ChatSources {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+}
+
+.ChatSourcesLabel {
+    font-size: 0.8em;
+    font-weight: 700;
+    color: var(--faintText);
+}
+
+.ChatSource {
+    display: flex;
+    align-items: center;
+    gap: 0.45em;
+    padding: 0.5em 0.8em;
+    border: 1px solid var(--hairline);
+    border-radius: 0.8em;
+    font-size: 0.85em;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.ChatBubble.isTyping {
+    display: flex;
+    gap: 0.3em;
+    padding-block: 1em;
+}
+
+.ChatBubble.isTyping span {
+    width: 0.45em;
+    height: 0.45em;
+    border-radius: 50%;
+    background: var(--faintText);
+    animation: Typing 1.2s ease-in-out infinite;
+}
+
+.ChatBubble.isTyping span:nth-child(2) {
+    animation-delay: 0.15s;
+}
+
+.ChatBubble.isTyping span:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+@keyframes Typing {
+    30% {
+        translate: 0 -0.3em;
+        opacity: 1;
+    }
+
+    0%,
+    60%,
+    100% {
+        opacity: 0.4;
+    }
+}
+
+.ChatInput {
+    margin-top: 0.4em;
+    padding: 0.8em 1em;
+    border-radius: 999px;
+    background: var(--appFill);
+    font-size: 0.92em;
+    font-weight: 500;
+    color: var(--faintText);
+}
+
+/* 마지막 권유 */
+.Closing {
+    max-width: var(--pageMaxWidth);
+    margin: 0 auto;
+    padding: var(--sectionSpace) var(--pageGutter);
+}
+
+.ClosingPanel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: clamp(64px, 9vw, 112px) 24px;
+    border-radius: 40px;
+    background:
+        radial-gradient(circle at 50% 0%, color-mix(in srgb, var(--blue) 22%, transparent), transparent 70%),
+        var(--secondaryBackground);
+    text-align: center;
+}
+
+.ClosingLogo {
+    font-size: 2rem;
+}
+
+.ClosingTitle {
+    margin: 20px 0 40px;
+    font-size: clamp(2rem, 1.35rem + 2.6vw, 3.25rem);
+    font-weight: 800;
+    line-height: 1.25;
+    letter-spacing: -0.03em;
+}
+
+/* 바닥글 */
+.SiteFooter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 48px var(--pageGutter) 64px;
+    border-top: 1px solid var(--hairline);
+    text-align: center;
+}
+
+.FooterLogo {
+    font-size: 1.5rem;
+}
+
+.FooterLinks {
+    display: flex;
+    gap: 16px;
+    margin-top: 4px;
+}
+
+.FooterLinks a {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--subText);
+    transition: color 0.2s;
+}
+
+.FooterLinks a:hover {
+    color: var(--primaryText);
+}
+
+.SiteFooter p {
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: var(--faintText);
+}
+
+/* 스크롤해서 화면에 들어오면 부드럽게 드러남. index.js가 html에 hasReveal을 붙인 경우에만 숨겨 둠
+   --revealDelay로 옆 요소와 조금씩 엇갈려 나타남 */
+.hasReveal .Reveal {
+    opacity: 0;
+    translate: 0 40px;
+    transition: opacity 1s var(--easeOut) var(--revealDelay, 0s), translate 1s var(--easeOut) var(--revealDelay, 0s);
+}
+
+.hasReveal .Reveal.isRevealed {
+    opacity: 1;
+    translate: none;
+}
+
+.Feature .FeatureVisual,
+.Bento > :nth-child(3n + 2) {
+    --revealDelay: 0.1s;
+}
+
+.Bento > :nth-child(3n) {
+    --revealDelay: 0.2s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .HeroWordmark,
+    .HeroTitle,
+    .HeroDescription,
+    .HeroActions,
+    .HeroVisual,
+    .FloatingCard,
+    .ChatBubble.isTyping span {
+        animation: none;
+    }
+
+    .hasReveal .Reveal,
+    .hasReveal .BentoTile.Reveal {
+        translate: none;
+        transition: opacity 0.4s, background-color 0.2s;
+    }
+
+    a.BentoTile:hover {
+        transform: none;
+    }
+}
+
+.NoticeFile {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.15em;
+}

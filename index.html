@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>순라이프 · 순천향대 학교생활 도우미</title>
+    <meta name="description" content="공지, 학사 일정, 학식까지. 순천향대 학교생활에 필요한 정보를 한곳에서 보고, 순라이프 AI에게 편하게 물어보세요.">
+    <meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <link rel="canonical" href="https://soonlife.net/">
+    <link rel="icon" type="image/svg+xml" href="./resources/images/logo.svg">
+    <link rel="icon" type="image/png" sizes="64x64" href="./resources/images/favicon-64.png">
+    <link rel="apple-touch-icon" href="./resources/images/apple-touch-icon.png">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://soonlife.net/">
+    <meta property="og:site_name" content="순라이프">
+    <meta property="og:title" content="순라이프 · 순천향대 학교생활 도우미">
+    <meta property="og:description" content="공지, 학사 일정, 학식까지. 궁금한 건 순라이프 AI에게 물어보세요.">
+    <meta property="og:image" content="https://soonlife.net/resources/images/og-image.png">
+    <meta property="og:locale" content="ko_KR">
+
+    <link rel="preload" href="./resources/fonts/HSSanTokki20-wordmark.woff2" as="font" type="font/woff2" crossorigin>
+    <style>
+        @import url('./resources/styles/root.css');
+        @import url('./resources/styles/index.css');
+    </style>
+    <script src="./resources/scripts/index.js" defer></script>
+</head>
+
+<body>
+    <!-- 아이콘: Tabler Icons (MIT, https://tabler.io/icons) outline. 선 굵기·색은 index.css의 .Icon에서 정함 -->
+    <svg class="IconSprite" aria-hidden="true">
+        <symbol id="icon-smart-home" viewBox="0 0 24 24"><path d="M19 8.71l-5.333 -4.148a2.666 2.666 0 0 0 -3.274 0l-5.334 4.148a2.665 2.665 0 0 0 -1.029 2.105v7.2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-7.2c0 -.823 -.38 -1.6 -1.03 -2.105" /><path d="M16 15c-2.21 1.333 -5.792 1.333 -8 0" /></symbol>
+        <symbol id="icon-speakerphone" viewBox="0 0 24 24"><path d="M18 8a3 3 0 0 1 0 6" /><path d="M10 8v11a1 1 0 0 1 -1 1h-1a1 1 0 0 1 -1 -1v-5" /><path d="M12 8l4.524 -3.77a.9 .9 0 0 1 1.476 .692v12.156a.9 .9 0 0 1 -1.476 .692l-4.524 -3.77h-8a1 1 0 0 1 -1 -1v-4a1 1 0 0 1 1 -1h8" /></symbol>
+        <symbol id="icon-calendar-event" viewBox="0 0 24 24"><path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2l0 -12" /><path d="M16 3l0 4" /><path d="M8 3l0 4" /><path d="M4 11l16 0" /><path d="M8 15h2v2h-2l0 -2" /></symbol>
+        <symbol id="icon-tools-kitchen-2" viewBox="0 0 24 24"><path d="M19 3v12h-5c-.023 -3.681 .184 -7.406 5 -12m0 12v6h-1v-3m-10 -14v17m-3 -17v3a3 3 0 1 0 6 0v-3" /></symbol>
+        <symbol id="icon-books" viewBox="0 0 24 24"><path d="M5 5a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1v14a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1l0 -14" /><path d="M9 5a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1v14a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1l0 -14" /><path d="M5 8h4" /><path d="M9 16h4" /><path d="M13.803 4.56l2.184 -.53c.562 -.135 1.133 .19 1.282 .732l3.695 13.418a1.02 1.02 0 0 1 -.634 1.219l-.133 .041l-2.184 .53c-.562 .135 -1.133 -.19 -1.282 -.732l-3.695 -13.418a1.02 1.02 0 0 1 .634 -1.219l.133 -.041" /><path d="M14 9l4 -1" /><path d="M16 16l3.923 -.98" /></symbol>
+        <symbol id="icon-history" viewBox="0 0 24 24"><path d="M12 8l0 4l2 2" /><path d="M3.05 11a9 9 0 1 1 .5 4m-.5 5v-5h5" /></symbol>
+        <symbol id="icon-message-chatbot" viewBox="0 0 24 24"><path d="M18 4a3 3 0 0 1 3 3v8a3 3 0 0 1 -3 3h-5l-5 3v-3h-2a3 3 0 0 1 -3 -3v-8a3 3 0 0 1 3 -3h12" /><path d="M9.5 9h.01" /><path d="M14.5 9h.01" /><path d="M9.5 13a3.5 3.5 0 0 0 5 0" /></symbol>
+        <symbol id="icon-search" viewBox="0 0 24 24"><path d="M3 10a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" /><path d="M21 21l-6 -6" /></symbol>
+        <symbol id="icon-paperclip" viewBox="0 0 24 24"><path d="M15 7l-6.5 6.5a1.5 1.5 0 0 0 3 3l6.5 -6.5a3 3 0 0 0 -6 -6l-6.5 6.5a4.5 4.5 0 0 0 9 9l6.5 -6.5" /></symbol>
+        <symbol id="icon-arrow-up" viewBox="0 0 24 24"><path d="M12 5l0 14" /><path d="M18 11l-6 -6" /><path d="M6 11l6 -6" /></symbol>
+    </svg>
+    <header class="SiteHeader">
+        <div class="SiteHeaderInner">
+            <a class="HeaderLogo SoonWordmark" href="#top" aria-label="순라이프 맨 위로"><span class="SoonAccent">순</span>라이프</a>
+            <nav class="HeaderNav" aria-label="기능 바로가기">
+                <a href="#ai">순라이프 AI</a>
+                <a href="#notice">공지</a>
+                <a href="#schedule">학사 일정</a>
+                <a href="#meal">학식</a>
+            </nav>
+            <a class="Button isPrimary isSmall" href="https://chat.soonlife.net">시작하기</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="Hero" id="top">
+            <p class="HeroWordmark SoonWordmark"><span class="SoonAccent">순</span>라이프 AI</p>
+            <h1 class="HeroTitle">순천향의 학교생활을<br>한 화면에 담았어요</h1>
+            <p class="HeroDescription">공지 찾고, 학사 일정 확인하고, 학식 메뉴 고르던 일. <br>여기저기 뒤지던 시간을 순라이프가 줄여 드려요.</p>
+            <div class="HeroActions">
+                <a class="Button isPrimary" href="https://chat.soonlife.net">순라이프 AI 시작하기</a>
+                <a class="Button isSecondary" href="#features">기능 둘러보기</a>
+            </div>
+
+            <div class="HeroVisual" aria-hidden="true">
+                <div class="FloatingCard isLeft">
+                    <span class="FloatingCardIcon"><svg class="Icon" aria-hidden="true"><use href="#icon-speakerphone"></use></svg></span>
+                    <span class="FloatingCardText"><strong>장학 공지</strong>교내 근로장학생 모집</span>
+                </div>
+                <div class="FloatingCard isRight">
+                    <span class="FloatingCardIcon"><svg class="Icon" aria-hidden="true"><use href="#icon-message-chatbot"></use></svg></span>
+                    <span class="FloatingCardText"><strong>수강 정정 언제까지야?</strong>학사 일정에서 찾았어요</span>
+                </div>
+
+                <div class="Phone">
+                    <div class="PhoneScreen HomeScreen">
+                        <div class="PhoneStatusBar">
+                            <span>9:41</span>
+                            <span class="PhoneBattery"></span>
+                        </div>
+                        <div class="HomeHeader">
+                            <span class="HomeMenuIcon"><i></i><i></i></span>
+                            <span class="HomeLogo SoonWordmark"><span class="SoonAccent">순</span>라이프 AI</span>
+                            <span class="HomeLogin">로그인</span>
+                        </div>
+                        <div class="HomeContent">
+                            <div class="HomeAsk">
+                                <strong class="HomeAskTitle">학교생활,<br>무엇이 궁금한가요?</strong>
+                                <span class="HomeAskSub">학교 공지를 직접 읽고 필요한 내용만 정리해 드려요.</span>
+                                <span class="HomeComposer">학교 공지, 무엇이든 물어보세요<i><svg class="Icon" aria-hidden="true"><use href="#icon-arrow-up"></use></svg></i></span>
+                                <div class="HomeSuggestions">
+                                    <span>수강 정정 언제까지야?</span>
+                                    <span>신청 가능한 장학금 알려줘</span>
+                                    <span>현재 학교에서 진행 중인 사업 알려줘</span>
+                                </div>
+                            </div>
+                            <div class="AppCard HomeNotices">
+                                <span class="AppCardLabel">학교 공지</span>
+                                <ul>
+                                    <li><b>장학</b>교내 근로장학생 모집</li>
+                                    <li><b>학사</b>수강 정정 기간 안내</li>
+                                    <li><b>취업</b>현장실습 참여 학생 모집</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="Overview" id="features">
+            <div class="SectionHead Reveal">
+                <p class="SectionEyebrow">이런 걸 할 수 있어요</p>
+                <h2 class="SectionTitle">여러 사이트를 오가는 대신<br>순라이프 하나면 돼요</h2>
+            </div>
+            <div class="Bento">
+                <article class="BentoTile isWide Reveal">
+                    <span class="BentoIcon" style="--iconColor: var(--blue);"><svg class="Icon" aria-hidden="true"><use href="#icon-smart-home"></use></svg></span>
+                    <h3 class="BentoTitle">홈</h3>
+                    <p class="BentoDescription">열자마자 바로 물어보고, 바로 확인해요.</p>
+                    <ul class="BentoPoints">
+                        <li>다가오는 학사 일정에 맞춘 추천 질문</li>
+                        <li>아래로 내리면 바로 이어지는 학교 공지</li>
+                        <li>설치 없이 휴대폰·PC 브라우저에서</li>
+                        <li>Google 간편 로그인</li>
+                    </ul>
+                </article>
+                <a class="BentoTile Reveal" href="#notice">
+                    <span class="BentoIcon" style="--iconColor: var(--cyan);"><svg class="Icon" aria-hidden="true"><use href="#icon-speakerphone"></use></svg></span>
+                    <h3 class="BentoTitle">공지</h3>
+                    <p class="BentoDescription">여러 사이트에 흩어진 공지를 한곳에서 모아봐요</p>
+                </a>
+                <a class="BentoTile Reveal" href="#schedule">
+                    <span class="BentoIcon" style="--iconColor: var(--indigo);"><svg class="Icon" aria-hidden="true"><use href="#icon-calendar-event"></use></svg></span>
+                    <h3 class="BentoTitle">학사 일정</h3>
+                    <p class="BentoDescription">수강신청부터 졸업까지 달력 하나로 봐요.</p>
+                </a>
+                <a class="BentoTile Reveal" href="#meal">
+                    <span class="BentoIcon" style="--iconColor: var(--orange);"><svg class="Icon" aria-hidden="true"><use href="#icon-tools-kitchen-2"></use></svg></span>
+                    <h3 class="BentoTitle">학식</h3>
+                    <p class="BentoDescription">뭐 먹을지 고민을 덜어 줘요.</p>
+                </a>
+                <a class="BentoTile Reveal" href="#notice">
+                    <span class="BentoIcon" style="--iconColor: var(--green);"><svg class="Icon" aria-hidden="true"><use href="#icon-books"></use></svg></span>
+                    <h3 class="BentoTitle">도서관</h3>
+                    <p class="BentoDescription">도서관 공지, FAQ, Q&amp;A도 함께 찾아봐요.</p>
+                </a>
+                <a class="BentoTile Reveal" href="#ai">
+                    <span class="BentoIcon" style="--iconColor: var(--teal);"><svg class="Icon" aria-hidden="true"><use href="#icon-history"></use></svg></span>
+                    <h3 class="BentoTitle">대화 기록</h3>
+                    <p class="BentoDescription">물어본 내용은 계정에 남아 언제든 다시 봐요.</p>
+                </a>
+                <a class="BentoTile isWide Reveal" href="#ai">
+                    <span class="BentoIcon" style="--iconColor: var(--blue);"><svg class="Icon" aria-hidden="true"><use href="#icon-message-chatbot"></use></svg></span>
+                    <h3 class="BentoTitle">순라이프 AI</h3>
+                    <p class="BentoDescription">어디에 물어볼지 모르겠다면, 그냥 물어보세요.</p>
+                </a>
+            </div>
+        </section>
+
+        <section class="Feature" id="ai" style="--featureAccent: var(--blue);">
+            <div class="FeatureText Reveal">
+                <p class="FeatureEyebrow"><svg class="Icon" aria-hidden="true"><use href="#icon-message-chatbot"></use></svg>순라이프 AI</p>
+                <h2 class="FeatureTitle">궁금한 게 생기면<br>그냥 물어보세요</h2>
+                <ul class="FeaturePoints">
+                    <li>평소 말투로 물으면 공지, 학칙, 학사 일정을 직접 찾아 읽고 답해요</li>
+                    <li>답변마다 근거로 읽은 공지를 출처로 달아 둬요</li>
+                    <li>신창역 셔틀 시간, 건물 위치 같은 학교 정보도 알려 줘요</li>
+                    <li>대화는 계정에 저장되고, 링크로 친구에게 공유할 수 있어요</li>
+                </ul>
+            </div>
+            <div class="FeatureVisual Reveal" aria-hidden="true">
+                <div class="AppCard VisualCard ChatCard">
+                    <p class="ChatBubble isMine">신청 가능한 장학금 알려줘</p>
+                    <p class="ChatTrace">공지 목록을 검색하는 중이에요.</p>
+                    <p class="ChatBubble">지금 신청할 수 있는 장학금은 교내 근로장학생 모집이에요. 신청서는 학생지원팀에 내면 돼요.</p>
+                    <div class="ChatSources">
+                        <span class="ChatSourcesLabel">출처</span>
+                        <span class="ChatSource"><b>장학</b>교내 근로장학생 모집</span>
+                    </div>
+                    <p class="ChatBubble isMine">신창역 셔틀 다음 차는?</p>
+                    <p class="ChatBubble isTyping"><span></span><span></span><span></span></p>
+                    <span class="ChatInput">학교 공지, 무엇이든 물어보세요</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="Feature isReversed" id="notice" style="--featureAccent: var(--blue);">
+            <div class="FeatureText Reveal">
+                <p class="FeatureEyebrow"><svg class="Icon" aria-hidden="true"><use href="#icon-speakerphone"></use></svg>공지</p>
+                <h2 class="FeatureTitle">흩어진 공지 말고<br>필요한 소식만 골라서</h2>
+                <ul class="FeaturePoints">
+                    <li>학사, 장학, 취업, 생활관까지 학교 게시판 공지를 한곳에 모았어요</li>
+                    <li>학과를 고르면 그 학과 공지만 보여 줘요</li>
+                    <li>요약을 먼저 보고, 원문과 첨부 파일도 바로 열어요</li>
+                    <li>도서관 공지와 FAQ, Q&amp;A도 함께 찾아봐요</li>
+                </ul>
+            </div>
+            <div class="FeatureVisual Reveal" aria-hidden="true">
+                <div class="AppCard VisualCard NoticeCard">
+                    <div class="NoticeHeader">
+                        <strong>공지</strong>
+                        <span class="NoticeSearch"><svg class="Icon" aria-hidden="true"><use href="#icon-search"></use></svg></span>
+                    </div>
+                    <div class="ChipRow">
+                        <span class="Chip">전체</span>
+                        <span class="Chip isActive">컴퓨터공학과 ▾</span>
+                        <span class="Chip">학사</span>
+                        <span class="Chip">장학</span>
+                        <span class="Chip">취업</span>
+                    </div>
+                    <ul class="NoticeList">
+                        <li>
+                            <span class="NoticeTitle">기말고사 시간표 안내</span>
+                            <span class="NoticeSummary">과목별 시험 일시와 강의실을 정리했어요.</span>
+                            <span class="NoticeMeta">오늘<span class="NoticeFile"><svg class="Icon" aria-hidden="true"><use href="#icon-paperclip"></use></svg>1</span></span>
+                        </li>
+                        <li>
+                            <span class="NoticeTitle">전공 멘토링 참가자 모집</span>
+                            <span class="NoticeSummary">선배 멘토와 함께하는 프로그램, 이번 주 금요일까지 신청해요.</span>
+                            <span class="NoticeMeta">어제</span>
+                        </li>
+                        <li>
+                            <span class="NoticeTitle">졸업 작품 제출 일정</span>
+                            <span class="NoticeSummary">제출 방법과 양식은 첨부 파일을 확인해요.</span>
+                            <span class="NoticeMeta">3일 전<span class="NoticeFile"><svg class="Icon" aria-hidden="true"><use href="#icon-paperclip"></use></svg>2</span></span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="Feature" id="schedule" style="--featureAccent: var(--indigo);">
+            <div class="FeatureText Reveal">
+                <p class="FeatureEyebrow"><svg class="Icon" aria-hidden="true"><use href="#icon-calendar-event"></use></svg>학사 일정</p>
+                <h2 class="FeatureTitle">수강신청부터 졸업까지<br>한 달 일정을 한눈에</h2>
+                <ul class="FeaturePoints">
+                    <li>수강·등록, 시험, 성적, 졸업, 방학을 색으로 나눠 보여 줘요</li>
+                    <li>학부와 대학원 일정을 골라 볼 수 있어요</li>
+                    <li>진행 중이거나 곧 할 일은 맨 위에 모아 둬요</li>
+                </ul>
+            </div>
+            <div class="FeatureVisual Reveal" aria-hidden="true">
+                <div class="AppCard VisualCard ScheduleCard">
+                    <div class="ScheduleHeader">
+                        <strong>11월</strong>
+                        <span class="ScheduleNav"><i>‹</i><i>›</i></span>
+                    </div>
+                    <div class="Segmented">
+                        <span class="isActive">전체</span>
+                        <span>학부</span>
+                        <span>대학원</span>
+                    </div>
+                    <p class="ScheduleGroup">진행 중 · 곧 할 일</p>
+                    <ul class="ScheduleList">
+                        <li style="--eventColor: var(--blue);"><span>수강 정정</span><time>11.03 – 11.05</time></li>
+                        <li style="--eventColor: var(--orange);"><span>중간고사 성적 확인</span><time>11.10</time></li>
+                        <li style="--eventColor: var(--red);"><span>기말고사</span><time>12.14 – 12.19</time></li>
+                        <li style="--eventColor: var(--green);"><span>동계방학</span><time>12.22</time></li>
+                    </ul>
+                    <ul class="ScheduleLegend">
+                        <li style="--eventColor: var(--blue);">수강·등록</li>
+                        <li style="--eventColor: var(--red);">시험·평가</li>
+                        <li style="--eventColor: var(--orange);">성적</li>
+                        <li style="--eventColor: var(--green);">개강·방학</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="Feature isReversed" id="meal" style="--featureAccent: var(--orange);">
+            <div class="FeatureText Reveal">
+                <p class="FeatureEyebrow"><svg class="Icon" aria-hidden="true"><use href="#icon-tools-kitchen-2"></use></svg>학식</p>
+                <h2 class="FeatureTitle">오늘 뭐 먹지?<br>열어 보면 답이 있어요</h2>
+                <ul class="FeaturePoints">
+                    <li>이번 주 식단표를 식당에 가기 전에 확인해요</li>
+                    <li>식단표를 눌러 크게 확대해서 볼 수 있어요</li>
+                    <li>"오늘 점심 뭐야?"라고 AI에게 물어봐도 돼요</li>
+                </ul>
+            </div>
+            <div class="FeatureVisual Reveal" aria-hidden="true">
+                <div class="AppCard VisualCard MealCard">
+                    <p class="MealHeading">이번 주 식단표</p>
+                    <span class="AppCardMeta">11월 2일 – 11월 6일</span>
+                    <div class="WeekStrip">
+                        <span class="isToday">월</span><span>화</span><span>수</span><span>목</span><span>금</span>
+                    </div>
+                    <p class="MealLabel">점심</p>
+                    <ul class="MealMenu">
+                        <li>제육볶음</li>
+                        <li>미역국</li>
+                        <li>계란말이</li>
+                        <li>배추김치</li>
+                        <li>흑미밥</li>
+                    </ul>
+                    <span class="CardLink">식단표 크게 보기</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="Closing" id="start">
+            <div class="ClosingPanel Reveal">
+                <span class="ClosingLogo SoonWordmark"><span class="SoonAccent">순</span>라이프 AI</span>
+                <h2 class="ClosingTitle">오늘부터 학교생활을<br>조금 더 가볍게</h2>
+                <a class="Button isPrimary" href="https://chat.soonlife.net">순라이프 AI 시작하기</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="SiteFooter">
+        <span class="FooterLogo SoonWordmark"><span class="SoonAccent">순</span>라이프</span>
+        <nav class="FooterLinks" aria-label="약관 및 정책">
+            <a href="./terms.html">이용약관</a>
+            <a href="./privacy.html" class="isStrong">개인정보처리방침</a>
+        </nav>
+        <p>© 2026 Soonlife. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>
