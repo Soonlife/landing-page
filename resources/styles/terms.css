@@ -306,10 +306,6 @@
     color: var(--faintText);
 }
 
-.LegalOperator.isInline {
-    margin: 14px 0;
-}
-
 /* 개인정보처리방침 링크는 눈에 띄게 (관례) */
 .FooterLinks a.isStrong {
     font-weight: 800;
