@@ -100,20 +100,38 @@ if (gallery) {
         if (Math.abs(event.deltaX) > Math.abs(event.deltaY)) setPaused(true);
     }, { passive: true });
 
-    const slideObserver = new IntersectionObserver((entries) => {
-        for (const entry of entries) {
-            if (entry.intersectionRatio > 0.6) {
-                current = slides.indexOf(entry.target);
-                // 지금 점만 aria-current="true", 나머지는 속성을 지움 (중간에 빈 값이 끼면 너비가 잠깐 튐)
-                dots.forEach((dot, index) => {
-                    if (index === current) dot.setAttribute('aria-current', 'true');
-                    else dot.removeAttribute('aria-current');
-                });
-                schedule();
+    // 지금 슬라이드 = 가운데에 가장 가까운 슬라이드
+    // (보이는 비율로 정하면 넓은 모니터에서 양옆 슬라이드도 60% 넘게 보여서 옆 슬라이드가 잡히고, 다음으로 넘길 때 2장씩 건너뜀)
+    function updateCurrent() {
+        const trackBox = track.getBoundingClientRect();
+        const center = trackBox.left + trackBox.width / 2;
+        let nearest = 0;
+        let nearestDistance = Infinity;
+        slides.forEach((slide, index) => {
+            const box = slide.getBoundingClientRect();
+            const distance = Math.abs(box.left + box.width / 2 - center);
+            if (distance < nearestDistance) {
+                nearest = index;
+                nearestDistance = distance;
             }
-        }
-    }, { root: track, threshold: 0.6 });
-    slides.forEach((slide) => slideObserver.observe(slide));
+        });
+        if (nearest === current && dots[current].hasAttribute('aria-current')) return;
+        current = nearest;
+        // 지금 점만 aria-current="true", 나머지는 속성을 지움 (중간에 빈 값이 끼면 너비가 잠깐 튐)
+        dots.forEach((dot, index) => {
+            if (index === current) dot.setAttribute('aria-current', 'true');
+            else dot.removeAttribute('aria-current');
+        });
+        schedule();
+    }
+
+    let currentFrame = 0;
+    const queueUpdateCurrent = () => {
+        cancelAnimationFrame(currentFrame);
+        currentFrame = requestAnimationFrame(updateCurrent);
+    };
+    track.addEventListener('scroll', queueUpdateCurrent, { passive: true });
+    addEventListener('resize', queueUpdateCurrent);
 
     // 페이지를 연 직후 하이라이트가 첫 화면 아래에 살짝 걸쳐 보여도 넘어가지 않게:
     // 사용자가 한 번 스크롤을 내린 뒤, 하이라이트가 절반 이상 화면에 들어왔을 때만 자동 넘김
@@ -136,7 +154,7 @@ if (gallery) {
         }, { passive: true });
     }
     document.addEventListener('visibilitychange', schedule);
-    dots[0].setAttribute('aria-current', 'true');
+    updateCurrent();
     setPaused(paused);
 }
 
