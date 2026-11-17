@@ -22,7 +22,7 @@ resources/styles/
   font.css                 Pretendard GOV(서브셋) · 산토끼체 워드마크(워드마크 글자만 담은 서브셋)
   index.css                랜딩 페이지 레이아웃과 목업 카드
 resources/scripts/index.js 스크롤 등장 효과, 기능 메뉴 위치 표시, 하이라이트 넘기기, 카드 화살표
-resources/images/          파비콘 · 애플 터치 아이콘 · OG 이미지 · 앱 아이콘(app-icon.png, 400px)
+resources/images/          파비콘 · 애플 터치 아이콘 · OG 이미지 · 앱 아이콘(app-icon.png, 512px. Icon Composer에서 내보낸 `SoonlifeIcon_V2-iOS-Default-512`를 그대로 씀. 모서리·광택이 이미지에 들어 있어 CSS로 깎지 않음)
 ```
 
 워드마크 서브셋에는 `순 라 이 프 A I 맵 밥 버 스 +`만 들어 있다(첫 화면 워드마크 애니메이션용). 워드마크에 다른 글자를 쓰려면 폰트를 다시 서브셋해야 한다.

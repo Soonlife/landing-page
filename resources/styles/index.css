@@ -398,27 +398,27 @@ body {
     z-index: 2;
     width: clamp(140px, 18vw, 200px);
     /* 빛 색은 순라이프 primary(#26539C, 앱 blue 600). 원래 파랑보다 어두워서 진하기를 0.35 → 0.6으로 올림 */
-    box-shadow: 0 30px 80px rgb(38 83 156 / 0.6);
+    filter: drop-shadow(0 30px 60px rgb(38 83 156 / 0.75));
 }
 
 
 /* 앱 아이콘 타일: 투명 배경 아이콘을 iOS 홈 화면처럼 둥근 흰 타일에 담음 */
+/* 앱 아이콘: Icon Composer에서 렌더링한 이미지(모서리·광택 포함)를 그대로 씀. CSS로 모서리를 깎지 않음
+   그림자는 사각형이 아니라 아이콘 모양을 따라가도록 drop-shadow로 */
 .AppTile {
-    display: grid;
-    place-items: center;
+    display: block;
     aspect-ratio: 1;
-    border-radius: 22.5%;
-    background: linear-gradient(180deg, #fff, #eef3fb);
 }
 
 .AppTile img {
+    display: block;
     width: 100%;
     height: auto;
 }
 
 .AppTile.isSmall {
     width: 96px;
-    box-shadow: 0 12px 32px rgb(0 0 0 / 0.12);
+    filter: drop-shadow(0 12px 24px rgb(0 0 0 / 0.3));
 }
 
 .Float {
