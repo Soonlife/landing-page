@@ -10,16 +10,18 @@
 // 스크립트가 실행될 때만 숨겨 두므로, 스크립트가 없으면 처음부터 다 보임
 document.documentElement.classList.add('hasReveal');
 
+// 카드는 가로 스크롤 줄 안에 있어서, 카드 하나하나 대신 줄 바깥 묶음(.Cards)이 화면에 들어오면 그 안의 카드를 한꺼번에 드러냄
+// (iOS Safari에서 스크롤 줄 안 요소의 감지·트랜지션이 어긋나는 문제를 피함. 카드마다의 시차는 CSS --revealDelay)
 const revealObserver = new IntersectionObserver((entries) => {
     for (const entry of entries) {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('isRevealed');
-            revealObserver.unobserve(entry.target);
-        }
+        if (!entry.isIntersecting) continue;
+        const targets = entry.target.matches('.Cards') ? entry.target.querySelectorAll('.Card') : [entry.target];
+        targets.forEach((target) => target.classList.add('isRevealed'));
+        revealObserver.unobserve(entry.target);
     }
 }, { rootMargin: '0px 0px -10% 0px' });
 
-document.querySelectorAll('.Reveal, .Card').forEach((element) => revealObserver.observe(element));
+document.querySelectorAll('.Reveal, .Cards').forEach((element) => revealObserver.observe(element));
 
 // 상단 바: 지금 보고 있는 섹션의 메뉴를 표시하고, 검은 무대를 지나면 밝게 바꿈
 const localNav = document.querySelector('.LocalNav');

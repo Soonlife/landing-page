@@ -163,35 +163,6 @@ body {
 }
 
 /* 상단 바: 반투명하게 뒤를 흐림 (약관 페이지) */
-.SiteHeader {
-    position: sticky;
-    top: 0;
-    z-index: 10;
-    background: color-mix(in srgb, var(--primaryBackground) 78%, transparent);
-    -webkit-backdrop-filter: saturate(180%) blur(20px);
-    backdrop-filter: saturate(180%) blur(20px);
-    border-bottom: 1px solid var(--hairline);
-}
-
-.SiteHeaderInner {
-    display: flex;
-    align-items: center;
-    gap: 32px;
-    max-width: var(--pageMaxWidth);
-    height: 52px;
-    margin: 0 auto;
-    padding: 0 var(--pageGutter);
-}
-
-.HeaderLogo {
-    font-size: 1.375rem;
-    color: var(--primaryText);
-}
-
-.SiteHeaderInner .Button {
-    margin-left: auto;
-}
-
 /* 랜딩 상단 바 (Apple 제품 페이지처럼): 왼쪽 로고와 설명, 오른쪽 메뉴와 사전 예약 버튼. 화면 위에 붙어 따라옴
    검은 첫 화면 위에서는 어둡게, 하이라이트를 지나면 밝게 바뀜 (index.js가 isLight를 붙임) */
 .LocalNav {
@@ -205,6 +176,11 @@ body {
     backdrop-filter: saturate(180%) blur(20px);
     border-bottom: 1px solid rgb(255 255 255 / 0.12);
     transition: background-color 0.3s, border-color 0.3s;
+}
+
+/* 약관 · 개인정보처리방침: 같은 상단 바를 쓰되 첫 화면이 없으니 겹치지 않고 내용 위에 놓임 */
+.LocalNav.isStatic {
+    margin-bottom: 0;
 }
 
 .LocalNav.isLight {
@@ -2049,18 +2025,36 @@ img.IndoorShot.isLarge {
     }
 }
 
-/* 스크롤해서 화면에 들어오면 부드럽게 드러남. index.js가 html에 hasReveal을 붙인 경우에만 숨겨 둠 */
+/* 스크롤해서 화면에 들어오면 부드럽게 드러남. index.js가 html에 hasReveal을 붙인 경우에만 숨겨 둠
+   트랜지션 대신 키프레임: iOS Safari에서 가로 스크롤 줄 안의 카드는 트랜지션이 건너뛰어지는 경우가 있어,
+   클래스가 붙으면 항상 처음부터 재생되는 animation을 씀 */
 .hasReveal .Reveal,
 .hasReveal .Card {
     opacity: 0;
-    translate: 0 32px;
-    transition: opacity 0.9s var(--easeOut) var(--revealDelay, 0s), translate 0.9s var(--easeOut) var(--revealDelay, 0s);
 }
 
 .hasReveal .Reveal.isRevealed,
 .hasReveal .Card.isRevealed {
     opacity: 1;
-    translate: none;
+    animation: RevealUp 0.9s var(--easeOut) var(--revealDelay, 0s) both;
+}
+
+@keyframes RevealFade {
+    from {
+        opacity: 0;
+    }
+}
+
+@keyframes RevealUp {
+    from {
+        opacity: 0;
+        translate: 0 32px;
+    }
+
+    to {
+        opacity: 1;
+        translate: none;
+    }
 }
 
 .Card:nth-child(2) { --revealDelay: 0.08s; }
@@ -2077,10 +2071,9 @@ img.IndoorShot.isLarge {
         animation: none;
     }
 
-    .hasReveal .Reveal,
-    .hasReveal .Card {
-        translate: none;
-        transition: opacity 0.4s;
+    .hasReveal .Reveal.isRevealed,
+    .hasReveal .Card.isRevealed {
+        animation: RevealFade 0.4s both;
     }
 }
 
