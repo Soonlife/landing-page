@@ -72,10 +72,17 @@ if (gallery) {
         track.scrollTo({ left: slide.offsetLeft - (track.clientWidth - slide.clientWidth) / 2, behavior: reducedMotion.matches ? 'auto' : 'smooth' });
     }
 
+    const interval = 5000;
+    gallery.style.setProperty('--galleryInterval', `${interval}ms`);
+
+    // 타이머를 새로 걸 때마다 점의 진행 막대도 처음부터 다시 채움 (isPlaying을 뗐다 붙여 애니메이션 재시작)
     function schedule() {
         clearTimeout(timer);
+        gallery.classList.remove('isPlaying');
         if (paused || !visible || document.hidden) return;
-        timer = setTimeout(() => goTo((current + 1) % slides.length), 5000);
+        void gallery.offsetWidth;
+        gallery.classList.add('isPlaying');
+        timer = setTimeout(() => goTo((current + 1) % slides.length), interval);
     }
 
     function setPaused(value) {
@@ -106,10 +113,26 @@ if (gallery) {
     }, { root: track, threshold: 0.6 });
     slides.forEach((slide) => slideObserver.observe(slide));
 
-    new IntersectionObserver(([entry]) => {
-        visible = entry.isIntersecting;
+    // 페이지를 연 직후 하이라이트가 첫 화면 아래에 살짝 걸쳐 보여도 넘어가지 않게:
+    // 사용자가 한 번 스크롤을 내린 뒤, 하이라이트가 절반 이상 화면에 들어왔을 때만 자동 넘김
+    let scrolled = scrollY > 0;
+    let inView = false;
+    const updateVisible = () => {
+        visible = scrolled && inView;
         schedule();
-    }).observe(gallery);
+    };
+    new IntersectionObserver(([entry]) => {
+        inView = entry.intersectionRatio >= 0.5;
+        updateVisible();
+    }, { threshold: [0, 0.5] }).observe(gallery);
+    if (!scrolled) {
+        addEventListener('scroll', function onFirstScroll() {
+            if (scrollY <= 0) return;
+            scrolled = true;
+            removeEventListener('scroll', onFirstScroll);
+            updateVisible();
+        }, { passive: true });
+    }
     document.addEventListener('visibilitychange', schedule);
     dots[0].setAttribute('aria-current', 'true');
     setPaused(paused);

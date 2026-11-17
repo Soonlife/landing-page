@@ -4,28 +4,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>순라이프 · 순천향의 모든 생활을 한 곳에서</title>
+    <title>순라이프 · 순천향대학교 캠퍼스 생활 앱</title>
     <meta name="description"
-        content="3D 캠퍼스 지도, 셔틀 도착 시간, 순라이프 AI, 공지·학사 일정·학식, 시간표와 외박 신청까지. iOS · Android · 웹 동시 출시 예정.">
+        content="순천향대학교 학생을 위한 캠퍼스 생활 앱 순라이프. 3D 캠퍼스 지도와 강의실 찾기, 셔틀 실시간 도착 시간, 순라이프 AI, 공지·학사 일정·학식, 시간표·성적·외박 신청까지 한 앱에서. 2026년 12월 iOS · Android 출시 예정.">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="application-name" content="순라이프">
+    <meta name="apple-mobile-web-app-title" content="순라이프">
+    <meta name="format-detection" content="telephone=no">
     <meta name="theme-color" content="#000000">
     <link rel="canonical" href="https://soonlife.net/">
     <link rel="icon" type="image/svg+xml" href="./resources/images/logo.svg">
     <link rel="icon" type="image/png" sizes="64x64" href="./resources/images/favicon-64.png">
     <link rel="apple-touch-icon" href="./resources/images/apple-touch-icon.png">
 
+    <!-- 링크 공유 미리보기 (카카오톡 · 페이스북 · 슬랙 · 디스코드 등). 이미지 원본은 tools/og/og.html -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://soonlife.net/">
     <meta property="og:site_name" content="순라이프">
     <meta property="og:title" content="순라이프 · 순천향의 모든 생활을 한 곳에서">
-    <meta property="og:description" content="3D 캠퍼스 지도, 셔틀, AI, 공지, 학식까지. iOS · Android · 웹 동시 출시 예정.">
+    <meta property="og:description" content="3D 캠퍼스 지도, 셔틀 도착 시간, 순라이프 AI, 공지·학식, 시간표와 외박 신청까지. 2026년 12월 iOS · Android 출시 예정.">
     <meta property="og:image" content="https://soonlife.net/resources/images/og-image.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="순라이프 앱 아이콘과 ‘순천향의 모든 생활을 한 곳에서’ 문구">
     <meta property="og:locale" content="ko_KR">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="순라이프 · 순천향의 모든 생활을 한 곳에서">
+    <meta name="twitter:description" content="3D 캠퍼스 지도, 셔틀 도착 시간, 순라이프 AI, 공지·학식, 시간표와 외박 신청까지. 2026년 12월 iOS · Android 출시 예정.">
+    <meta name="twitter:image" content="https://soonlife.net/resources/images/og-image.png">
+    <meta name="twitter:image:alt" content="순라이프 앱 아이콘과 ‘순천향의 모든 생활을 한 곳에서’ 문구">
+
+    <!-- 검색 결과에 사이트 이름 · 로고 · 앱 정보를 알려 주는 구조화 데이터 -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "WebSite",
+                "@id": "https://soonlife.net/#website",
+                "url": "https://soonlife.net/",
+                "name": "순라이프",
+                "alternateName": ["Soonlife", "순라이프 앱"],
+                "inLanguage": "ko-KR",
+                "publisher": { "@id": "https://soonlife.net/#organization" }
+            },
+            {
+                "@type": "Organization",
+                "@id": "https://soonlife.net/#organization",
+                "name": "모덱스 스튜디오",
+                "url": "https://soonlife.net/",
+                "logo": "https://soonlife.net/resources/images/app-icon.png"
+            },
+            {
+                "@type": "MobileApplication",
+                "name": "순라이프",
+                "alternateName": "Soonlife",
+                "description": "순천향대학교 학생을 위한 캠퍼스 생활 앱 순라이프. 3D 캠퍼스 지도와 강의실 찾기, 셔틀 실시간 도착 시간, 순라이프 AI, 공지·학사 일정·학식, 시간표·성적·외박 신청까지 한 앱에서. 2026년 12월 iOS · Android 출시 예정.",
+                "operatingSystem": "iOS, Android",
+                "applicationCategory": "EducationalApplication",
+                "inLanguage": "ko-KR",
+                "image": "https://soonlife.net/resources/images/app-icon.png",
+                "url": "https://soonlife.net/",
+                "publisher": { "@id": "https://soonlife.net/#organization" }
+            }
+        ]
+    }
+    </script>
 
     <link rel="preload" href="./resources/fonts/HSSanTokki20-wordmark.woff2" as="font" type="font/woff2" crossorigin>
     <style>
         @import url('./resources/styles/root.css');
         @import url('./resources/styles/index.css');
     </style>
+    <script defer src="https://tracker.soonlife.net/script.js" data-website-id="8c1d4c5d-113c-4b09-b04d-39cd8e42c38a"></script>
     <script src="./resources/scripts/index.js" defer></script>
 </head>
 
@@ -600,9 +652,9 @@
                                     <span class="ATtBody">
                                         <span class="ATtHours"><i>9</i><i>10</i><i>11</i><i>12</i></span>
                                         <b style="--c:2;--r:1;--h:3;--bg:#5479b4">자료구조<small>M502</small></b>
-                                        <b style="--c:3;--r:3;--h:3;--bg:#4f8c79">운영체제<small>M408</small></b>
+                                        <b style="--c:3;--r:3;--h:3;--bg:#4f8c79">운영체제<small>M501</small></b>
                                         <b style="--c:4;--r:1;--h:3;--bg:#5479b4">자료구조<small>M502</small></b>
-                                        <b style="--c:5;--r:4;--h:3;--bg:#4f8c79">운영체제<small>M408</small></b>
+                                        <b style="--c:5;--r:4;--h:3;--bg:#4f8c79">운영체제<small>M501</small></b>
                                         <b style="--c:6;--r:2;--h:4;--bg:#b2864c">데이터베이스<small>ML614</small></b>
                                     </span>
                                 </div>

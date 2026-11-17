@@ -53,3 +53,10 @@ node tools/bus3d/build.mjs              # 기본: ../app 의 node_modules(three)
 - `resources/images/app/indoor-5f-dark.webp` (1220×780): 하이라이트(검은 무대)용 가로 캡처.
 
 앱의 `createBuildingScene`과 `building-viewer.tsx`의 색으로 그린 뒤 캡처했다. 앱의 평면이 바뀌면 같은 방식으로 다시 캡처한다.
+
+## 검색 · 공유 미리보기
+
+- `index.html` `<head>`: 검색용 제목·설명, 링크 공유 미리보기(Open Graph · Twitter 카드), 구조화 데이터(JSON-LD: WebSite · Organization · MobileApplication).
+- `resources/images/og-image.png` (1200×630): 공유 미리보기 이미지. 원본은 `tools/og/og.html`이고, 로컬 서버(8765)를 띄운 뒤 `node tools/og/render.cjs`로 다시 만든다. 문구를 바꾸면 이미지도 다시 만든다.
+- `robots.txt` · `sitemap.xml`: 페이지를 추가하거나 고치면 `sitemap.xml`의 `lastmod`도 바꾼다.
+- 카카오톡은 미리보기를 캐시하므로, 이미지를 바꾼 뒤에는 카카오 개발자 도구의 공유 디버거에서 캐시를 지운다.
