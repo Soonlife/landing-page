@@ -4,10 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>순라이프 · 순천향대 학교생활 도우미</title>
-    <meta name="description" content="공지, 학사 일정, 학식까지. 순천향대 학교생활에 필요한 정보를 한곳에서 보고, 순라이프 AI에게 편하게 물어보세요.">
-    <meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
-    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <title>순라이프 · 순천향의 모든 생활을 한 곳에서</title>
+    <meta name="description"
+        content="3D 캠퍼스 지도, 셔틀 도착 시간, 순라이프 AI, 공지·학사 일정·학식, 시간표와 외박 신청까지. iOS · Android · 웹 동시 출시 예정.">
+    <meta name="theme-color" content="#000000">
     <link rel="canonical" href="https://soonlife.net/">
     <link rel="icon" type="image/svg+xml" href="./resources/images/logo.svg">
     <link rel="icon" type="image/png" sizes="64x64" href="./resources/images/favicon-64.png">
@@ -16,8 +16,8 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://soonlife.net/">
     <meta property="og:site_name" content="순라이프">
-    <meta property="og:title" content="순라이프 · 순천향대 학교생활 도우미">
-    <meta property="og:description" content="공지, 학사 일정, 학식까지. 궁금한 건 순라이프 AI에게 물어보세요.">
+    <meta property="og:title" content="순라이프 · 순천향의 모든 생활을 한 곳에서">
+    <meta property="og:description" content="3D 캠퍼스 지도, 셔틀, AI, 공지, 학식까지. iOS · Android · 웹 동시 출시 예정.">
     <meta property="og:image" content="https://soonlife.net/resources/images/og-image.png">
     <meta property="og:locale" content="ko_KR">
 
@@ -30,283 +30,697 @@
 </head>
 
 <body>
-    <!-- 아이콘: Tabler Icons (MIT, https://tabler.io/icons) outline. 선 굵기·색은 index.css의 .Icon에서 정함 -->
+    <!-- 아이콘: Tabler Icons (MIT, https://tabler.io/icons) — 앱과 같은 아이콘 세트 -->
     <svg class="IconSprite" aria-hidden="true">
-        <symbol id="icon-smart-home" viewBox="0 0 24 24"><path d="M19 8.71l-5.333 -4.148a2.666 2.666 0 0 0 -3.274 0l-5.334 4.148a2.665 2.665 0 0 0 -1.029 2.105v7.2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-7.2c0 -.823 -.38 -1.6 -1.03 -2.105" /><path d="M16 15c-2.21 1.333 -5.792 1.333 -8 0" /></symbol>
-        <symbol id="icon-speakerphone" viewBox="0 0 24 24"><path d="M18 8a3 3 0 0 1 0 6" /><path d="M10 8v11a1 1 0 0 1 -1 1h-1a1 1 0 0 1 -1 -1v-5" /><path d="M12 8l4.524 -3.77a.9 .9 0 0 1 1.476 .692v12.156a.9 .9 0 0 1 -1.476 .692l-4.524 -3.77h-8a1 1 0 0 1 -1 -1v-4a1 1 0 0 1 1 -1h8" /></symbol>
-        <symbol id="icon-calendar-event" viewBox="0 0 24 24"><path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2l0 -12" /><path d="M16 3l0 4" /><path d="M8 3l0 4" /><path d="M4 11l16 0" /><path d="M8 15h2v2h-2l0 -2" /></symbol>
-        <symbol id="icon-tools-kitchen-2" viewBox="0 0 24 24"><path d="M19 3v12h-5c-.023 -3.681 .184 -7.406 5 -12m0 12v6h-1v-3m-10 -14v17m-3 -17v3a3 3 0 1 0 6 0v-3" /></symbol>
-        <symbol id="icon-books" viewBox="0 0 24 24"><path d="M5 5a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1v14a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1l0 -14" /><path d="M9 5a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1v14a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1l0 -14" /><path d="M5 8h4" /><path d="M9 16h4" /><path d="M13.803 4.56l2.184 -.53c.562 -.135 1.133 .19 1.282 .732l3.695 13.418a1.02 1.02 0 0 1 -.634 1.219l-.133 .041l-2.184 .53c-.562 .135 -1.133 -.19 -1.282 -.732l-3.695 -13.418a1.02 1.02 0 0 1 .634 -1.219l.133 -.041" /><path d="M14 9l4 -1" /><path d="M16 16l3.923 -.98" /></symbol>
-        <symbol id="icon-history" viewBox="0 0 24 24"><path d="M12 8l0 4l2 2" /><path d="M3.05 11a9 9 0 1 1 .5 4m-.5 5v-5h5" /></symbol>
-        <symbol id="icon-message-chatbot" viewBox="0 0 24 24"><path d="M18 4a3 3 0 0 1 3 3v8a3 3 0 0 1 -3 3h-5l-5 3v-3h-2a3 3 0 0 1 -3 -3v-8a3 3 0 0 1 3 -3h12" /><path d="M9.5 9h.01" /><path d="M14.5 9h.01" /><path d="M9.5 13a3.5 3.5 0 0 0 5 0" /></symbol>
-        <symbol id="icon-search" viewBox="0 0 24 24"><path d="M3 10a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" /><path d="M21 21l-6 -6" /></symbol>
-        <symbol id="icon-paperclip" viewBox="0 0 24 24"><path d="M15 7l-6.5 6.5a1.5 1.5 0 0 0 3 3l6.5 -6.5a3 3 0 0 0 -6 -6l-6.5 6.5a4.5 4.5 0 0 0 9 9l6.5 -6.5" /></symbol>
-        <symbol id="icon-arrow-up" viewBox="0 0 24 24"><path d="M12 5l0 14" /><path d="M18 11l-6 -6" /><path d="M6 11l6 -6" /></symbol>
+        <symbol id="i-arrow-up" viewBox="0 0 24 24">
+            <path d="M12 5l0 14" />
+            <path d="M18 11l-6 -6" />
+            <path d="M6 11l6 -6" />
+        </symbol>
+        <symbol id="i-books" viewBox="0 0 24 24">
+            <path d="M5 5a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1v14a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1l0 -14" />
+            <path d="M9 5a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1v14a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1l0 -14" />
+            <path d="M5 8h4" />
+            <path d="M9 16h4" />
+            <path
+                d="M13.803 4.56l2.184 -.53c.562 -.135 1.133 .19 1.282 .732l3.695 13.418a1.02 1.02 0 0 1 -.634 1.219l-.133 .041l-2.184 .53c-.562 .135 -1.133 -.19 -1.282 -.732l-3.695 -13.418a1.02 1.02 0 0 1 .634 -1.219l.133 -.041" />
+            <path d="M14 9l4 -1" />
+            <path d="M16 16l3.923 -.98" />
+        </symbol>
+        <symbol id="i-bus" viewBox="0 0 24 24">
+            <path d="M4 17a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
+            <path d="M16 17a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
+            <path d="M4 17h-2v-11a1 1 0 0 1 1 -1h14a5 7 0 0 1 5 7v5h-2m-4 0h-8" />
+            <path d="M16 5l1.5 7l4.5 0" />
+            <path d="M2 10l15 0" />
+            <path d="M7 5l0 5" />
+            <path d="M12 5l0 5" />
+        </symbol>
+        <!-- 출시 플랫폼 로고: 선 아이콘 대신 면을 채운 로고 -->
+        <symbol id="i-logo-apple" viewBox="0 0 24 24">
+            <path fill="currentColor" stroke="none"
+                d="M15.079 5.999l.239 .012c1.43 .097 3.434 1.013 4.508 2.586a1 1 0 0 1 -.344 1.44c-.05 .028 -.372 .158 -.497 .217a4.15 4.15 0 0 0 -.722 .431c-.614 .461 -.948 1.009 -.942 1.694c.01 .885 .339 1.454 .907 1.846c.208 .143 .436 .253 .666 .33c.126 .043 .426 .116 .444 .122a1 1 0 0 1 .662 .942c0 2.621 -3.040 6.381 -5.286 6.381c-.79 0 -1.272 -.091 -1.983 -.315l-.098 -.031c-.463 -.146 -.702 -.192 -1.133 -.192c-.52 0 -.863 .06 -1.518 .237l-.197 .053c-.575 .153 -.964 .226 -1.5 .248c-2.749 0 -5.285 -5.093 -5.285 -9.072c0 -3.87 1.786 -6.92 5.286 -6.92c.297 0 .598 .045 .909 .128c.403 .107 .774 .26 1.296 .508c.787 .374 .948 .44 1.009 .44h.016c.03 -.003 .128 -.047 1.056 -.457c1.061 -.467 1.864 -.685 2.746 -.616l-.24 -.012z" />
+            <path fill="currentColor" stroke="none" d="M14 1a1 1 0 0 1 1 1a3 3 0 0 1 -3 3a1 1 0 0 1 -1 -1a3 3 0 0 1 3 -3z" />
+        </symbol>
+        <symbol id="i-logo-android" viewBox="0 0 24 24">
+            <path fill="currentColor" stroke="none" fill-rule="evenodd"
+                d="M2 19a10 10 0 0 1 20 0z M7.4 15.2a1.15 1.15 0 1 0 2.3 0a1.15 1.15 0 1 0 -2.3 0z M14.3 15.2a1.15 1.15 0 1 0 2.3 0a1.15 1.15 0 1 0 -2.3 0z" />
+            <path fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" d="M6.6 11.2l-2.1 -3.6 M17.4 11.2l2.1 -3.6" />
+        </symbol>
+        <symbol id="i-calendar-event" viewBox="0 0 24 24">
+            <path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2l0 -12" />
+            <path d="M16 3l0 4" />
+            <path d="M8 3l0 4" />
+            <path d="M4 11l16 0" />
+            <path d="M8 15h2v2h-2l0 -2" />
+        </symbol>
+        <symbol id="i-checkbox" viewBox="0 0 24 24">
+            <path d="M9 11l3 3l8 -8" />
+            <path d="M20 12v6a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h9" />
+        </symbol>
+        <symbol id="i-chevron-down" viewBox="0 0 24 24">
+            <path d="M6 9l6 6l6 -6" />
+        </symbol>
+        <symbol id="i-chevron-left" viewBox="0 0 24 24">
+            <path d="M15 6l-6 6l6 6" />
+        </symbol>
+        <symbol id="i-chevron-right" viewBox="0 0 24 24">
+            <path d="M9 6l6 6l-6 6" />
+        </symbol>
+        <symbol id="i-id-badge-2" viewBox="0 0 24 24">
+            <path d="M7 12h3v4h-3l0 -4" />
+            <path d="M10 6h-6a1 1 0 0 0 -1 1v12a1 1 0 0 0 1 1h16a1 1 0 0 0 1 -1v-12a1 1 0 0 0 -1 -1h-6" />
+            <path d="M10 4a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1v3a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1l0 -3" />
+            <path d="M14 16h2" />
+            <path d="M14 12h4" />
+        </symbol>
+        <symbol id="i-link" viewBox="0 0 24 24">
+            <path d="M9 15l6 -6" />
+            <path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" />
+            <path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" />
+        </symbol>
+        <symbol id="i-map-pin" viewBox="0 0 24 24">
+            <path d="M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
+            <path d="M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0" />
+        </symbol>
+        <symbol id="i-microphone" viewBox="0 0 24 24">
+            <path d="M9 5a3 3 0 0 1 3 -3a3 3 0 0 1 3 3v5a3 3 0 0 1 -3 3a3 3 0 0 1 -3 -3l0 -5" />
+            <path d="M5 10a7 7 0 0 0 14 0" />
+            <path d="M8 21l8 0" />
+            <path d="M12 17l0 4" />
+        </symbol>
+        <symbol id="i-moon" viewBox="0 0 24 24">
+            <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454l0 .008" />
+        </symbol>
+        <symbol id="i-palette" viewBox="0 0 24 24">
+            <path
+                d="M12 21a9 9 0 0 1 0 -18c4.97 0 9 3.582 9 8c0 1.06 -.474 2.078 -1.318 2.828c-.844 .75 -1.989 1.172 -3.182 1.172h-2.5a2 2 0 0 0 -1 3.75a1.3 1.3 0 0 1 -1 2.25" />
+            <path d="M7.5 10.5a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+            <path d="M11.5 7.5a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+            <path d="M15.5 10.5a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+        </symbol>
+        <symbol id="i-player-pause" viewBox="0 0 24 24">
+            <path d="M6 6a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1v12a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1l0 -12" />
+            <path d="M14 6a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1v12a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1l0 -12" />
+        </symbol>
+        <symbol id="i-player-play" viewBox="0 0 24 24">
+            <path d="M7 4v16l13 -8l-13 -8" />
+        </symbol>
+        <symbol id="i-search" viewBox="0 0 24 24">
+            <path d="M3 10a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" />
+            <path d="M21 21l-6 -6" />
+        </symbol>
+        <symbol id="i-sparkles" viewBox="0 0 24 24">
+            <path
+                d="M16 18a2 2 0 0 1 2 2a2 2 0 0 1 2 -2a2 2 0 0 1 -2 -2a2 2 0 0 1 -2 2m0 -12a2 2 0 0 1 2 2a2 2 0 0 1 2 -2a2 2 0 0 1 -2 -2a2 2 0 0 1 -2 2m-7 12a6 6 0 0 1 6 -6a6 6 0 0 1 -6 -6a6 6 0 0 1 -6 6a6 6 0 0 1 6 6" />
+        </symbol>
+        <symbol id="i-speakerphone" viewBox="0 0 24 24">
+            <path d="M18 8a3 3 0 0 1 0 6" />
+            <path d="M10 8v11a1 1 0 0 1 -1 1h-1a1 1 0 0 1 -1 -1v-5" />
+            <path
+                d="M12 8l4.524 -3.77a.9 .9 0 0 1 1.476 .692v12.156a.9 .9 0 0 1 -1.476 .692l-4.524 -3.77h-8a1 1 0 0 1 -1 -1v-4a1 1 0 0 1 1 -1h8" />
+        </symbol>
+        <symbol id="i-tools-kitchen-2" viewBox="0 0 24 24">
+            <path d="M19 3v12h-5c-.023 -3.681 .184 -7.406 5 -12m0 12v6h-1v-3m-10 -14v17m-3 -17v3a3 3 0 1 0 6 0v-3" />
+        </symbol>
+        <symbol id="i-x" viewBox="0 0 24 24">
+            <path d="M18 6l-12 12" />
+            <path d="M6 6l12 12" />
+        </symbol>
     </svg>
-    <header class="SiteHeader">
-        <div class="SiteHeaderInner">
-            <a class="HeaderLogo SoonWordmark" href="#top" aria-label="순라이프 맨 위로"><span class="SoonAccent">순</span>라이프</a>
-            <nav class="HeaderNav" aria-label="기능 바로가기">
+
+    <header class="LocalNav">
+        <div class="LocalNavInner">
+            <a class="NavBrand" href="#top" aria-label="순라이프 맨 위로">
+                <span class="SoonWordmark"><span class="SoonAccent">순</span>라이프</span>
+            </a>
+            <nav class="NavLinks" aria-label="기능 바로가기">
+                <a href="#top" class="isActive">개요</a>
+                <a href="#map">순맵</a>
+                <a href="#bus">순버스</a>
                 <a href="#ai">순라이프 AI</a>
-                <a href="#notice">공지</a>
-                <a href="#schedule">학사 일정</a>
-                <a href="#meal">학식</a>
+                <a href="#news">학교 소식</a>
+                <a href="#school">학교 생활</a>
             </nav>
-            <a class="Button isPrimary isSmall" href="https://chat.soonlife.net">시작하기</a>
+            <a class="Button isPrimary isSmall" href="https://naver.me/Fc6l1Zgi" data-preregister>사전 예약하기</a>
         </div>
     </header>
 
     <main>
+        <!-- 첫 화면 -->
         <section class="Hero" id="top">
-            <p class="HeroWordmark SoonWordmark"><span class="SoonAccent">순</span>라이프 AI</p>
-            <h1 class="HeroTitle">순천향의 학교생활을<br>한 화면에 담았어요</h1>
-            <p class="HeroDescription">공지 찾고, 학사 일정 확인하고, 학식 메뉴 고르던 일. <br>여기저기 뒤지던 시간을 순라이프가 줄여 드려요.</p>
-            <div class="HeroActions">
-                <a class="Button isPrimary" href="https://chat.soonlife.net">순라이프 AI 시작하기</a>
-                <a class="Button isSecondary" href="#features">기능 둘러보기</a>
+            <p class="HeroWordmark" role="img" aria-label="순라이프">
+                <span class="SoonlifeLogo" aria-hidden="true">
+                    <span class="SoonWordmark SoonAccent">순</span>
+                    <span id="ServiceNameScrollView">
+                        <span class="SoonWordmark" data-centered>라이프</span>
+                        <span class="SoonWordmark">라이프 AI</span>
+                        <span class="SoonWordmark">맵</span>
+                        <span class="SoonWordmark">밥</span>
+                        <span class="SoonWordmark">버스</span>
+                    </span>
+                </span>
+            </p>
+            <h1 class="HeroTitle">순천향의 모든 생활을<br>한 곳에서.</h1>
+            <p class="HeroNote">2026년 12월 출시 예정</p>
+            <a class="Button isPrimary isPill HeroCta" href="https://naver.me/Fc6l1Zgi" data-preregister>사전 예약하기</a>
+
+            <div class="HeroStage" aria-hidden="true">
+                <span class="AppTile HeroIcon"><img src="./resources/images/app-icon.png" alt="" width="200"
+                        height="200"></span>
+                <span class="Float isA"><i style="--tint: var(--green)"><svg class="Icon" aria-hidden="true">
+                            <use href="#i-bus"></use>
+                        </svg></i><span><b>하교직행</b>4분 후 도착</span></span>
+                <span class="Float isB"><i style="--tint: var(--teal)"><svg class="Icon" aria-hidden="true">
+                            <use href="#i-map-pin"></use>
+                        </svg></i><span><b>M502</b>멀티미디어관 5층</span></span>
+                <span class="Float isC"><i style="--tint: var(--purple)"><svg class="Icon" aria-hidden="true">
+                            <use href="#i-sparkles"></use>
+                        </svg></i><span><b>장학금 언제까지야?</b>11월 21일까지예요</span></span>
+                <span class="Float isF"><i style="--tint: var(--blue)"><svg class="Icon" aria-hidden="true">
+                            <use href="#i-speakerphone"></use>
+                        </svg></i><span><b>공지 요약</b>근로장학생 · 11/21 마감</span></span>
+                <span class="Float isD"><i style="--tint: var(--orange)"><svg class="Icon" aria-hidden="true">
+                            <use href="#i-tools-kitchen-2"></use>
+                        </svg></i><span><b>오늘 점심</b>돈육바베큐볶음</span></span>
+                <span class="Float isE"><i style="--tint: var(--red)"><svg class="Icon" aria-hidden="true">
+                            <use href="#i-calendar-event"></use>
+                        </svg></i><span><b>D-3</b>수강 정정 마감</span></span>
             </div>
+        </section>
 
-            <div class="HeroVisual" aria-hidden="true">
-                <div class="FloatingCard isLeft">
-                    <span class="FloatingCardIcon"><svg class="Icon" aria-hidden="true"><use href="#icon-speakerphone"></use></svg></span>
-                    <span class="FloatingCardText"><strong>장학 공지</strong>교내 근로장학생 모집</span>
-                </div>
-                <div class="FloatingCard isRight">
-                    <span class="FloatingCardIcon"><svg class="Icon" aria-hidden="true"><use href="#icon-message-chatbot"></use></svg></span>
-                    <span class="FloatingCardText"><strong>수강 정정 언제까지야?</strong>학사 일정에서 찾았어요</span>
-                </div>
-
-                <div class="Phone">
-                    <div class="PhoneScreen HomeScreen">
-                        <div class="PhoneStatusBar">
-                            <span>9:41</span>
-                            <span class="PhoneBattery"></span>
-                        </div>
-                        <div class="HomeHeader">
-                            <span class="HomeMenuIcon"><i></i><i></i></span>
-                            <span class="HomeLogo SoonWordmark"><span class="SoonAccent">순</span>라이프 AI</span>
-                            <span class="HomeLogin">로그인</span>
-                        </div>
-                        <div class="HomeContent">
-                            <div class="HomeAsk">
-                                <strong class="HomeAskTitle">학교생활,<br>무엇이 궁금한가요?</strong>
-                                <span class="HomeAskSub">학교 공지를 직접 읽고 필요한 내용만 정리해 드려요.</span>
-                                <span class="HomeComposer">학교 공지, 무엇이든 물어보세요<i><svg class="Icon" aria-hidden="true"><use href="#icon-arrow-up"></use></svg></i></span>
-                                <div class="HomeSuggestions">
-                                    <span>수강 정정 언제까지야?</span>
-                                    <span>신청 가능한 장학금 알려줘</span>
-                                    <span>현재 학교에서 진행 중인 사업 알려줘</span>
-                                </div>
-                            </div>
-                            <div class="AppCard HomeNotices">
-                                <span class="AppCardLabel">학교 공지</span>
-                                <ul>
-                                    <li><b>장학</b>교내 근로장학생 모집</li>
-                                    <li><b>학사</b>수강 정정 기간 안내</li>
-                                    <li><b>취업</b>현장실습 참여 학생 모집</li>
+        <!-- 하이라이트 -->
+        <section class="Highlights" aria-labelledby="highlights-title">
+            <h2 class="VisuallyHidden" id="highlights-title">하이라이트</h2>
+            <div class="Gallery" data-gallery>
+                <ul class="GalleryTrack">
+                    <li class="Slide">
+                        <div class="SlideVisual">
+                            <div class="Frag isLarge">
+                                <div class="ASearch"><svg class="Icon" aria-hidden="true">
+                                        <use href="#i-search"></use>
+                                    </svg><span>M502</span><i class="Caret"></i></div>
+                                <ul class="ACard AList">
+                                    <li><span class="ABadge">M</span><span class="ACopy"><b>멀티미디어관 5층</b><small>M502 ·
+                                                강의실</small></span><svg class="Icon" aria-hidden="true">
+                                            <use href="#i-chevron-right"></use>
+                                        </svg></li>
+                                    <li><span class="ABadge isSoft">M</span><span
+                                            class="ACopy"><b>멀티미디어관</b><small>C11</small></span><svg class="Icon"
+                                            aria-hidden="true">
+                                            <use href="#i-chevron-right"></use>
+                                        </svg></li>
                                 </ul>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="Overview" id="features">
-            <div class="SectionHead Reveal">
-                <p class="SectionEyebrow">이런 걸 할 수 있어요</p>
-                <h2 class="SectionTitle">여러 사이트를 오가는 대신<br>순라이프 하나면 돼요</h2>
-            </div>
-            <div class="Bento">
-                <article class="BentoTile isWide Reveal">
-                    <span class="BentoIcon" style="--iconColor: var(--blue);"><svg class="Icon" aria-hidden="true"><use href="#icon-smart-home"></use></svg></span>
-                    <h3 class="BentoTitle">홈</h3>
-                    <p class="BentoDescription">열자마자 바로 물어보고, 바로 확인해요.</p>
-                    <ul class="BentoPoints">
-                        <li>다가오는 학사 일정에 맞춘 추천 질문</li>
-                        <li>아래로 내리면 바로 이어지는 학교 공지</li>
-                        <li>설치 없이 휴대폰·PC 브라우저에서</li>
-                        <li>Google 간편 로그인</li>
-                    </ul>
-                </article>
-                <a class="BentoTile Reveal" href="#notice">
-                    <span class="BentoIcon" style="--iconColor: var(--cyan);"><svg class="Icon" aria-hidden="true"><use href="#icon-speakerphone"></use></svg></span>
-                    <h3 class="BentoTitle">공지</h3>
-                    <p class="BentoDescription">여러 사이트에 흩어진 공지를 한곳에서 모아봐요</p>
-                </a>
-                <a class="BentoTile Reveal" href="#schedule">
-                    <span class="BentoIcon" style="--iconColor: var(--indigo);"><svg class="Icon" aria-hidden="true"><use href="#icon-calendar-event"></use></svg></span>
-                    <h3 class="BentoTitle">학사 일정</h3>
-                    <p class="BentoDescription">수강신청부터 졸업까지 달력 하나로 봐요.</p>
-                </a>
-                <a class="BentoTile Reveal" href="#meal">
-                    <span class="BentoIcon" style="--iconColor: var(--orange);"><svg class="Icon" aria-hidden="true"><use href="#icon-tools-kitchen-2"></use></svg></span>
-                    <h3 class="BentoTitle">학식</h3>
-                    <p class="BentoDescription">뭐 먹을지 고민을 덜어 줘요.</p>
-                </a>
-                <a class="BentoTile Reveal" href="#notice">
-                    <span class="BentoIcon" style="--iconColor: var(--green);"><svg class="Icon" aria-hidden="true"><use href="#icon-books"></use></svg></span>
-                    <h3 class="BentoTitle">도서관</h3>
-                    <p class="BentoDescription">도서관 공지, FAQ, Q&amp;A도 함께 찾아봐요.</p>
-                </a>
-                <a class="BentoTile Reveal" href="#ai">
-                    <span class="BentoIcon" style="--iconColor: var(--teal);"><svg class="Icon" aria-hidden="true"><use href="#icon-history"></use></svg></span>
-                    <h3 class="BentoTitle">대화 기록</h3>
-                    <p class="BentoDescription">물어본 내용은 계정에 남아 언제든 다시 봐요.</p>
-                </a>
-                <a class="BentoTile isWide Reveal" href="#ai">
-                    <span class="BentoIcon" style="--iconColor: var(--blue);"><svg class="Icon" aria-hidden="true"><use href="#icon-message-chatbot"></use></svg></span>
-                    <h3 class="BentoTitle">순라이프 AI</h3>
-                    <p class="BentoDescription">어디에 물어볼지 모르겠다면, 그냥 물어보세요.</p>
-                </a>
-            </div>
-        </section>
-
-        <section class="Feature" id="ai" style="--featureAccent: var(--blue);">
-            <div class="FeatureText Reveal">
-                <p class="FeatureEyebrow"><svg class="Icon" aria-hidden="true"><use href="#icon-message-chatbot"></use></svg>순라이프 AI</p>
-                <h2 class="FeatureTitle">궁금한 게 생기면<br>그냥 물어보세요</h2>
-                <ul class="FeaturePoints">
-                    <li>평소 말투로 물으면 공지, 학칙, 학사 일정을 직접 찾아 읽고 답해요</li>
-                    <li>답변마다 근거로 읽은 공지를 출처로 달아 둬요</li>
-                    <li>신창역 셔틀 시간, 건물 위치 같은 학교 정보도 알려 줘요</li>
-                    <li>대화는 계정에 저장되고, 링크로 친구에게 공유할 수 있어요</li>
+                        <p class="SlideCaption"><b>강의실까지 한 번에.</b> 강의실 코드를 입력하면 3D 캠퍼스 맵에서 건물과 층을 바로 찾아요.</p>
+                    </li>
+                    <li class="Slide">
+                        <div class="SlideVisual">
+                            <div class="Frag isLarge">
+                                <div class="ACard ABusRow">
+                                    <span class="AWell" style="--well:#ff8a3d"><svg class="Icon" aria-hidden="true">
+                                            <use href="#i-bus"></use>
+                                        </svg></span>
+                                    <span class="ACopy"><b>하교직행</b><small>종점 도착 · 정시 운행</small></span>
+                                    <span class="AEta"><b>4분 후</b><small>21:07 도착</small></span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="SlideCaption"><b>셔틀은 기다리지 말고 맞춰서.</b> 실시간 열차 위치로 계산한 도착 시간을 알려 줘요.</p>
+                    </li>
+                    <li class="Slide">
+                        <div class="SlideVisual">
+                            <div class="Frag isLarge AChat">
+                                <p class="ABubbleUser">이번 학기 수강 정정 언제까지야?</p>
+                                <div class="AAssistant"><span class="AAvatar"><i class="BrandMark"></i></span>
+                                    <p>11월 19일 오후 5시까지예요. 포털 수강신청 메뉴에서 정정할 수 있어요.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="SlideCaption"><b>궁금하면 그냥 물어보세요.</b> 순라이프 AI가 공지와 학칙을 찾아 읽고 답해요.</p>
+                    </li>
+                    <li class="Slide">
+                        <div class="SlideVisual">
+                            <div class="Frag isLarge">
+                                <div class="ACard ADday"><small>학사 일정</small><b>D-3</b><span>수강 정정 마감</span></div>
+                            </div>
+                        </div>
+                        <p class="SlideCaption"><b>마감일은 먼저 챙겨 줘요.</b> 다가오는 학사 일정을 D-day로 보여 줘요.</p>
+                    </li>
+                    <li class="Slide">
+                        <div class="SlideVisual">
+                            <img class="IndoorShot isLarge" src="./resources/images/app/indoor-5f-dark.webp"
+                                alt="멀티미디어관 5층 3D 실내 안내 화면. 501호부터 520호까지의 호실 배치와 계단, 엘리베이터, 화장실 위치가 보여요." width="1220"
+                                height="780" decoding="async">
+                        </div>
+                        <p class="SlideCaption"><b>건물 안까지 3D로.</b> 층을 고르면 그 층의 호실 배치가 펼쳐져요.</p>
+                    </li>
                 </ul>
-            </div>
-            <div class="FeatureVisual Reveal" aria-hidden="true">
-                <div class="AppCard VisualCard ChatCard">
-                    <p class="ChatBubble isMine">신청 가능한 장학금 알려줘</p>
-                    <p class="ChatTrace">공지 목록을 검색하는 중이에요.</p>
-                    <p class="ChatBubble">지금 신청할 수 있는 장학금은 교내 근로장학생 모집이에요. 신청서는 학생지원팀에 내면 돼요.</p>
-                    <div class="ChatSources">
-                        <span class="ChatSourcesLabel">출처</span>
-                        <span class="ChatSource"><b>장학</b>교내 근로장학생 모집</span>
-                    </div>
-                    <p class="ChatBubble isMine">신창역 셔틀 다음 차는?</p>
-                    <p class="ChatBubble isTyping"><span></span><span></span><span></span></p>
-                    <span class="ChatInput">학교 공지, 무엇이든 물어보세요</span>
+                <div class="GalleryControls">
+                    <div class="GalleryDots" role="group" aria-label="하이라이트 고르기"></div>
+                    <button type="button" class="GalleryPlay" aria-pressed="false" aria-label="자동 넘김 멈추기"
+                        data-gallery-play><svg class="Icon isPause" aria-hidden="true">
+                            <use href="#i-player-pause"></use>
+                        </svg><svg class="Icon isPlay" aria-hidden="true">
+                            <use href="#i-player-play"></use>
+                        </svg></button>
                 </div>
             </div>
         </section>
 
-        <section class="Feature isReversed" id="notice" style="--featureAccent: var(--blue);">
-            <div class="FeatureText Reveal">
-                <p class="FeatureEyebrow"><svg class="Icon" aria-hidden="true"><use href="#icon-speakerphone"></use></svg>공지</p>
-                <h2 class="FeatureTitle">흩어진 공지 말고<br>필요한 소식만 골라서</h2>
-                <ul class="FeaturePoints">
-                    <li>학사, 장학, 취업, 생활관까지 학교 게시판 공지를 한곳에 모았어요</li>
-                    <li>학과를 고르면 그 학과 공지만 보여 줘요</li>
-                    <li>요약을 먼저 보고, 원문과 첨부 파일도 바로 열어요</li>
-                    <li>도서관 공지와 FAQ, Q&amp;A도 함께 찾아봐요</li>
+        <!-- 순맵 -->
+        <section class="Block" id="map">
+            <div class="BlockHead Reveal">
+                <p class="BlockEyebrow">순맵</p>
+                <h2 class="BlockTitle">캠퍼스가 손안에 3D로.<br>더 정확하게. 더 쉽게.</h2>
+                <p class="BlockIntro">강의실 코드 하나면 건물과 층까지 찾아요. 직관적인 3D 건물과 층별 실내 안내로, 처음 가는 강의실도 헤매지 않아요.</p>
+            </div>
+            <div class="Cards" data-cards>
+                <ul class="CardTrack">
+                    <li class="Card">
+                        <div class="CardVisual">
+                            <div class="Frag">
+                                <div class="ASearch"><svg class="Icon" aria-hidden="true">
+                                        <use href="#i-search"></use>
+                                    </svg><span>M502</span><i class="Caret"></i></div>
+                                <ul class="ACard AList">
+                                    <li><span class="ABadge">M</span><span class="ACopy"><b>멀티미디어관 5층</b><small>M502 ·
+                                                강의실</small></span><svg class="Icon" aria-hidden="true">
+                                            <use href="#i-chevron-right"></use>
+                                        </svg></li>
+                                    <li><span class="ABadge isSoft">M</span><span
+                                            class="ACopy"><b>멀티미디어관</b><small>C11</small></span><svg class="Icon"
+                                            aria-hidden="true">
+                                            <use href="#i-chevron-right"></use>
+                                        </svg></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <p class="CardCaption"><b>강의실 코드로 검색.</b> M502처럼 시간표에 적힌 코드를 입력하면, 3D 캠퍼스 맵에서 건물과 층을 바로 찾아요.
+                        </p>
+                    </li>
+                    <li class="Card">
+                        <div class="CardVisual">
+                            <div class="Frag">
+                                <div class="ACard APlace">
+                                    <span class="ABadge isLarge">ML</span>
+                                    <span class="ACopy"><b class="isTitle">미디어랩스</b><small>B19</small></span>
+                                    <span class="AClose"><svg class="Icon" aria-hidden="true">
+                                            <use href="#i-x"></use>
+                                        </svg></span>
+                                    <span class="ATags"><span>GS25</span><span>인쇄실</span><span>글로벌문화카페</span></span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="CardCaption"><b>건물 정보.</b> 지도에서 건물을 누르면 그 건물에 어떤 학과가 있는지, 편의점·카페 같은 편의시설은 어디 있는지 한번에 보여 줘요.</p>
+                    </li>
+                    <li class="Card">
+                        <div class="CardVisual isShot">
+                            <picture class="IndoorShot">
+                                <source srcset="./resources/images/app/indoor-5f-card-dark.webp"
+                                    media="(prefers-color-scheme: dark)">
+                                <img src="./resources/images/app/indoor-5f-card-light.webp"
+                                    alt="멀티미디어관 5층 3D 실내 안내 화면. 501호부터 520호까지의 호실 배치와 계단, 엘리베이터, 화장실 위치가 보여요."
+                                    width="800" height="928" loading="lazy" decoding="async">
+                            </picture>
+                        </div>
+                        <p class="CardCaption"><b>3D 실내 안내.</b> 보고 싶은 층을 고르면 강의실 배치는 물론 계단과 엘리베이터 위치까지 한눈에 보여요.</p>
+                    </li>
                 </ul>
-            </div>
-            <div class="FeatureVisual Reveal" aria-hidden="true">
-                <div class="AppCard VisualCard NoticeCard">
-                    <div class="NoticeHeader">
-                        <strong>공지</strong>
-                        <span class="NoticeSearch"><svg class="Icon" aria-hidden="true"><use href="#icon-search"></use></svg></span>
-                    </div>
-                    <div class="ChipRow">
-                        <span class="Chip">전체</span>
-                        <span class="Chip isActive">컴퓨터공학과 ▾</span>
-                        <span class="Chip">학사</span>
-                        <span class="Chip">장학</span>
-                        <span class="Chip">취업</span>
-                    </div>
-                    <ul class="NoticeList">
-                        <li>
-                            <span class="NoticeTitle">기말고사 시간표 안내</span>
-                            <span class="NoticeSummary">과목별 시험 일시와 강의실을 정리했어요.</span>
-                            <span class="NoticeMeta">오늘<span class="NoticeFile"><svg class="Icon" aria-hidden="true"><use href="#icon-paperclip"></use></svg>1</span></span>
-                        </li>
-                        <li>
-                            <span class="NoticeTitle">전공 멘토링 참가자 모집</span>
-                            <span class="NoticeSummary">선배 멘토와 함께하는 프로그램, 이번 주 금요일까지 신청해요.</span>
-                            <span class="NoticeMeta">어제</span>
-                        </li>
-                        <li>
-                            <span class="NoticeTitle">졸업 작품 제출 일정</span>
-                            <span class="NoticeSummary">제출 방법과 양식은 첨부 파일을 확인해요.</span>
-                            <span class="NoticeMeta">3일 전<span class="NoticeFile"><svg class="Icon" aria-hidden="true"><use href="#icon-paperclip"></use></svg>2</span></span>
-                        </li>
-                    </ul>
-                </div>
+                <div class="CardControls"><button type="button" class="Arrow" data-prev aria-label="이전"><svg
+                            class="Icon" aria-hidden="true">
+                            <use href="#i-chevron-left"></use>
+                        </svg></button><button type="button" class="Arrow" data-next aria-label="다음"><svg class="Icon"
+                            aria-hidden="true">
+                            <use href="#i-chevron-right"></use>
+                        </svg></button></div>
             </div>
         </section>
 
-        <section class="Feature" id="schedule" style="--featureAccent: var(--indigo);">
-            <div class="FeatureText Reveal">
-                <p class="FeatureEyebrow"><svg class="Icon" aria-hidden="true"><use href="#icon-calendar-event"></use></svg>학사 일정</p>
-                <h2 class="FeatureTitle">수강신청부터 졸업까지<br>한 달 일정을 한눈에</h2>
-                <ul class="FeaturePoints">
-                    <li>수강·등록, 시험, 성적, 졸업, 방학을 색으로 나눠 보여 줘요</li>
-                    <li>학부와 대학원 일정을 골라 볼 수 있어요</li>
-                    <li>진행 중이거나 곧 할 일은 맨 위에 모아 둬요</li>
+        <!-- 순버스 -->
+        <section class="Block" id="bus">
+            <div class="BlockHead Reveal">
+                <p class="BlockEyebrow">순버스</p>
+                <h2 class="BlockTitle">셔틀은 기다리지 말고.<br>시간 맞춰 나가세요.</h2>
+                <p class="BlockIntro">신창역과 캠퍼스를 오가는 셔틀의 도착 시간을 1호선 실시간 열차 위치로 계산해요. 가까운 정류장의 다음 버스를 먼저 보여 줘요.</p>
+            </div>
+            <div class="Cards" data-cards>
+                <ul class="CardTrack">
+                    <li class="Card">
+                        <div class="CardVisual">
+                            <div class="Frag">
+                                <div class="ACard ABusRow">
+                                    <span class="AWell" style="--well:#ff8a3d"><svg class="Icon" aria-hidden="true">
+                                            <use href="#i-bus"></use>
+                                        </svg></span>
+                                    <span class="ACopy"><b>하교직행</b><small>종점 도착 · 정시 운행</small></span>
+                                    <span class="AEta"><b>4분 후</b><small>21:07 도착</small></span>
+                                </div>
+                                <div class="ACard ABusRow">
+                                    <span class="AWell" style="--well:#2d85f0"><svg class="Icon" aria-hidden="true">
+                                            <use href="#i-bus"></use>
+                                        </svg></span>
+                                    <span class="ACopy"><b>등교직행</b><small>후문 방면 · 2분 지연</small></span>
+                                    <span class="AEta"><b>9분 후</b><small>21:12 출발</small></span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="CardCaption"><b>실시간 도착 시간.</b> 열차가 늦어지면 셔틀도 늦어지는 만큼, 실제 열차 위치를 반영해 도착 시간을 계산해요.</p>
+                    </li>
+                    <li class="Card">
+                        <div class="CardVisual">
+                            <div class="Frag">
+                                <div class="ACard AStops">
+                                    <p class="AHead"><b>하교직행</b><small>신창역 방면</small></p>
+                                    <ol>
+                                        <li class="isPassed"><span>정문</span><time>21:00</time></li>
+                                        <li class="isPassed"><span>향설기념중앙도서관</span><time>21:01</time></li>
+                                        <li class="isNow"><span>후문</span><time>지금</time></li>
+                                        <li><span>신창(순천향대)역</span><time>21:07</time></li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="CardCaption"><b>정류장마다 도착 시각.</b> 버스가 지금 어느 정류장을 지나는지, 다음 정류장에는 언제 도착하는지 보여 줘요.</p>
+                    </li>
+                    <li class="Card">
+                        <div class="CardVisual">
+                            <div class="Frag ABusStage" data-bus-stage>
+                                <div class="ABusModel" data-bus-model aria-hidden="true"></div>
+                                <div class="AChips isCenter" role="group" aria-label="노선 고르기"><button type="button"
+                                        class="AChip isActive" data-bus-color="" aria-pressed="true">전체</button><button
+                                        type="button" class="AChip" data-bus-color="#2d85f0"
+                                        aria-pressed="false">등교</button><button type="button" class="AChip"
+                                        data-bus-color="#ed7b35" aria-pressed="false">하교</button><button type="button"
+                                        class="AChip" data-bus-color="#049a5c" aria-pressed="false">학내순환</button></div>
+                            </div>
+                        </div>
+                        <p class="CardCaption"><b>노선별로 골라 보기.</b> 등교·하교 직행과 학내 순환 중 원하는 노선만 골라 볼 수 있어요.</p>
+                    </li>
+                    <li class="Card">
+                        <div class="CardVisual">
+                            <div class="Frag">
+                                <div class="ACard AFirstLast">
+                                    <span><small>첫차</small><b data-roll>08:10</b></span>
+                                    <i></i>
+                                    <span><small>막차</small><b data-roll>21:40</b></span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="CardCaption"><b>첫차·막차와 운휴 안내.</b> 오늘 운행하는 노선과 첫차·막차, 운휴일까지 미리 알려 줘요.</p>
+                    </li>
                 </ul>
-            </div>
-            <div class="FeatureVisual Reveal" aria-hidden="true">
-                <div class="AppCard VisualCard ScheduleCard">
-                    <div class="ScheduleHeader">
-                        <strong>11월</strong>
-                        <span class="ScheduleNav"><i>‹</i><i>›</i></span>
-                    </div>
-                    <div class="Segmented">
-                        <span class="isActive">전체</span>
-                        <span>학부</span>
-                        <span>대학원</span>
-                    </div>
-                    <p class="ScheduleGroup">진행 중 · 곧 할 일</p>
-                    <ul class="ScheduleList">
-                        <li style="--eventColor: var(--blue);"><span>수강 정정</span><time>11.03 – 11.05</time></li>
-                        <li style="--eventColor: var(--orange);"><span>중간고사 성적 확인</span><time>11.10</time></li>
-                        <li style="--eventColor: var(--red);"><span>기말고사</span><time>12.14 – 12.19</time></li>
-                        <li style="--eventColor: var(--green);"><span>동계방학</span><time>12.22</time></li>
-                    </ul>
-                    <ul class="ScheduleLegend">
-                        <li style="--eventColor: var(--blue);">수강·등록</li>
-                        <li style="--eventColor: var(--red);">시험·평가</li>
-                        <li style="--eventColor: var(--orange);">성적</li>
-                        <li style="--eventColor: var(--green);">개강·방학</li>
-                    </ul>
-                </div>
+                <div class="CardControls"><button type="button" class="Arrow" data-prev aria-label="이전"><svg
+                            class="Icon" aria-hidden="true">
+                            <use href="#i-chevron-left"></use>
+                        </svg></button><button type="button" class="Arrow" data-next aria-label="다음"><svg class="Icon"
+                            aria-hidden="true">
+                            <use href="#i-chevron-right"></use>
+                        </svg></button></div>
             </div>
         </section>
 
-        <section class="Feature isReversed" id="meal" style="--featureAccent: var(--orange);">
-            <div class="FeatureText Reveal">
-                <p class="FeatureEyebrow"><svg class="Icon" aria-hidden="true"><use href="#icon-tools-kitchen-2"></use></svg>학식</p>
-                <h2 class="FeatureTitle">오늘 뭐 먹지?<br>열어 보면 답이 있어요</h2>
-                <ul class="FeaturePoints">
-                    <li>이번 주 식단표를 식당에 가기 전에 확인해요</li>
-                    <li>식단표를 눌러 크게 확대해서 볼 수 있어요</li>
-                    <li>"오늘 점심 뭐야?"라고 AI에게 물어봐도 돼요</li>
+        <!-- 순라이프 AI -->
+        <section class="Block" id="ai">
+            <div class="BlockHead Reveal">
+                <p class="BlockEyebrow">순라이프 AI</p>
+                <h2 class="BlockTitle">어디에 물어볼지 모를 땐.<br>그냥 물어보세요.</h2>
+                <p class="BlockIntro">학교 공지와 학칙, 학사 일정을 직접 찾아 읽고 답해요. 평소 말투 그대로 묻고, 답변의 근거가 된 공지까지 바로 확인해요.</p>
+            </div>
+            <div class="Cards" data-cards>
+                <ul class="CardTrack">
+                    <li class="Card">
+                        <div class="CardVisual">
+                            <div class="Frag AChat">
+                                <p class="ABubbleUser">신청 가능한 장학금 알려줘</p>
+                                <div class="AAssistant"><span class="AAvatar"><i class="BrandMark"></i></span>
+                                    <p>지금 신청할 수 있는 장학금은 2개예요.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="CardCaption"><b>대화하듯 편하게.</b> 공지 찾을 필요 없이 평소 말투 그대로 물어보면 돼요.</p>
+                    </li>
+                    <li class="Card">
+                        <div class="CardVisual">
+                            <div class="Frag">
+                                <p class="ALabel">출처</p>
+                                <div class="ASources">
+                                    <span><b>교내 근로장학생 모집 안내</b><small>장학 · 11.12</small></span>
+                                    <span><b>향설나눔 장학금 신청 안내</b><small>장학 · 11.10</small></span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="CardCaption"><b>근거까지 함께.</b> 답변마다 참고한 공지를 출처로 달아 둬서, 원문을 눌러 바로 확인할 수 있어요.</p>
+                    </li>
+                    <li class="Card">
+                        <div class="CardVisual">
+                            <div class="Frag">
+                                <p class="ALabel isCenter">듣고 있어요…</p>
+                                <div class="AComposer"><span class="isTyped">다음 셔틀 언제 와?</span><span
+                                        class="AMic isOn"><svg class="Icon" aria-hidden="true">
+                                            <use href="#i-microphone"></use>
+                                        </svg></span><span class="ASend"><svg class="Icon" aria-hidden="true">
+                                            <use href="#i-arrow-up"></use>
+                                        </svg></span></div>
+                            </div>
+                        </div>
+                        <p class="CardCaption"><b>말로 물어보기.</b> 마이크를 눌러 말하면 입력창에 질문이 들어가요. 걸으면서도 편하게 물어봐요.</p>
+                    </li>
+                    <li class="Card">
+                        <div class="CardVisual isTight">
+                            <div class="Frag AChat">
+                                <p class="ABubbleUser">군대 가는데 휴학 신청 어떻게 해?</p>
+                                <div class="AAssistant">
+                                    <span class="AAvatar"><i class="BrandMark"></i></span>
+                                    <div class="AStep">
+                                        <b>1단계. 포털 접속</b>
+                                        <p>종합정보시스템에 로그인해요.</p>
+                                        <b>2단계. 휴학 신청</b>
+                                        <p>학적 › 변동처리 › 휴학신청에서 사유를 고르고 신청해요.</p>
+                                        <img class="AShot" src="./resources/images/app/ai-step-leave.webp" alt="종합정보시스템의 휴학신청(학생용) 화면. 휴학 사유 목록과 신청 버튼이 빨간 상자로 표시되어 있어요." width="1149" height="556" loading="lazy" decoding="async">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="CardCaption"><b>사진까지 함께.</b> 공지에 첨부된 안내 이미지까지 읽고, 따라 해야 할 화면 사진을 글과 함께 단계별로 보여 줘요.</p>
+                    </li>
                 </ul>
-            </div>
-            <div class="FeatureVisual Reveal" aria-hidden="true">
-                <div class="AppCard VisualCard MealCard">
-                    <p class="MealHeading">이번 주 식단표</p>
-                    <span class="AppCardMeta">11월 2일 – 11월 6일</span>
-                    <div class="WeekStrip">
-                        <span class="isToday">월</span><span>화</span><span>수</span><span>목</span><span>금</span>
-                    </div>
-                    <p class="MealLabel">점심</p>
-                    <ul class="MealMenu">
-                        <li>제육볶음</li>
-                        <li>미역국</li>
-                        <li>계란말이</li>
-                        <li>배추김치</li>
-                        <li>흑미밥</li>
-                    </ul>
-                    <span class="CardLink">식단표 크게 보기</span>
-                </div>
+                <div class="CardControls"><button type="button" class="Arrow" data-prev aria-label="이전"><svg
+                            class="Icon" aria-hidden="true">
+                            <use href="#i-chevron-left"></use>
+                        </svg></button><button type="button" class="Arrow" data-next aria-label="다음"><svg class="Icon"
+                            aria-hidden="true">
+                            <use href="#i-chevron-right"></use>
+                        </svg></button></div>
             </div>
         </section>
 
-        <section class="Closing" id="start">
-            <div class="ClosingPanel Reveal">
-                <span class="ClosingLogo SoonWordmark"><span class="SoonAccent">순</span>라이프 AI</span>
-                <h2 class="ClosingTitle">오늘부터 학교생활을<br>조금 더 가볍게</h2>
-                <a class="Button isPrimary" href="https://chat.soonlife.net">순라이프 AI 시작하기</a>
+        <!-- 학교 소식 -->
+        <section class="Block" id="news">
+            <div class="BlockHead Reveal">
+                <p class="BlockEyebrow">공지 · 학사 일정 · 학식</p>
+                <h2 class="BlockTitle">놓치면 안 되는 소식만.<br>한곳에 모아서.</h2>
+                <p class="BlockIntro">여러 게시판에 흩어진 공지와 학사 일정, 오늘의 학식을 앱 하나에서 확인해요.</p>
+            </div>
+            <div class="Cards" data-cards>
+                <ul class="CardTrack">
+                    <li class="Card">
+                        <div class="CardVisual">
+                            <div class="Frag">
+                                <ul class="ACard AFeed">
+                                    <li><span class="ACat" style="--cat:#26539c">학사</span><b>기말시험 안내</b><small>과목별
+                                            시험 일정을 정리했어요.</small></li>
+                                    <li><span class="ACat" style="--cat:#049a5c">취업</span><b>겨울방학 현장실습 모집</b><small>참여
+                                            기업과 신청 방법은 첨부를 확인해요.</small></li>
+                                    <li><span class="ACat" style="--cat:#865e94">생활관</span><b>보강주 신청 안내</b><small>기간
+                                            안에 포털에서 신청해요.</small></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <p class="CardCaption"><b>공지를 한곳에.</b> 학사·장학·취업·생활관부터 도서관까지, 학교 게시판 공지를 요약과 함께 모아 보여 줘요.</p>
+                    </li>
+                    <li class="Card">
+                        <div class="CardVisual">
+                            <div class="Frag">
+                                <div class="AChips isCenter"><span class="AChip">전체</span><span
+                                        class="AChip isActive">컴퓨터소프트웨어공학과<svg class="Icon" aria-hidden="true">
+                                            <use href="#i-chevron-down"></use>
+                                        </svg></span><span class="AChip">취업</span></div>
+                            </div>
+                        </div>
+                        <p class="CardCaption"><b>우리 학과 공지만.</b> 학과를 고르면 그 학과 게시판의 공지만 따로 모아 볼 수 있어요.</p>
+                    </li>
+                    <li class="Card">
+                        <div class="CardVisual">
+                            <div class="Frag">
+                                <div class="ACard ADday"><small>학사 일정</small><b>D-3</b><span>수강 정정 마감</span></div>
+                            </div>
+                        </div>
+                        <p class="CardCaption"><b>학사 일정을 D-day로.</b> 수강신청, 시험, 성적, 졸업 일정을 달력으로 보고, 가까운 마감은 먼저 알려 줘요.</p>
+                    </li>
+                    <li class="Card">
+                        <div class="CardVisual">
+                            <div class="Frag">
+                                <div class="ACard AMeal">
+                                    <p class="AHead"><b>중식</b><small>향설1관</small></p>
+                                    <ul>
+                                        <li>돈육바베큐소스볶음</li>
+                                        <li>감자튀김*케찹</li>
+                                        <li>와사비무쌈</li>
+                                        <li>다시마무국</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="CardCaption"><b>오늘의 학식.</b> 식당별 아침·점심·저녁 메뉴를 가기 전에 확인해요.</p>
+                    </li>
+                </ul>
+                <div class="CardControls"><button type="button" class="Arrow" data-prev aria-label="이전"><svg
+                            class="Icon" aria-hidden="true">
+                            <use href="#i-chevron-left"></use>
+                        </svg></button><button type="button" class="Arrow" data-next aria-label="다음"><svg class="Icon"
+                            aria-hidden="true">
+                            <use href="#i-chevron-right"></use>
+                        </svg></button></div>
+            </div>
+        </section>
+
+        <!-- 학교 생활 -->
+        <section class="Block" id="school">
+            <div class="BlockHead Reveal">
+                <p class="BlockEyebrow">학교 생활</p>
+                <h2 class="BlockTitle">학교 업무도 앱에서.<br>포털을 찾아 헤매지 않게.</h2>
+                <p class="BlockIntro">학생 인증을 한 번 하면 시간표와 성적을 보고, 외박 신청과 시설 예약까지 앱에서 바로 할 수 있어요.</p>
+            </div>
+            <div class="Cards" data-cards>
+                <ul class="CardTrack">
+                    <li class="Card">
+                        <div class="CardVisual">
+                            <div class="Frag">
+                                <div class="ACard ATimetable">
+                                    <span class="ATtHead"><i></i><i>월</i><i>화</i><i>수</i><i>목</i><i>금</i></span>
+                                    <span class="ATtBody">
+                                        <span class="ATtHours"><i>9</i><i>10</i><i>11</i><i>12</i></span>
+                                        <b style="--c:2;--r:1;--h:3;--bg:#5479b4">자료구조<small>M502</small></b>
+                                        <b style="--c:3;--r:3;--h:3;--bg:#4f8c79">운영체제<small>M408</small></b>
+                                        <b style="--c:4;--r:1;--h:3;--bg:#5479b4">자료구조<small>M502</small></b>
+                                        <b style="--c:5;--r:4;--h:3;--bg:#4f8c79">운영체제<small>M408</small></b>
+                                        <b style="--c:6;--r:2;--h:4;--bg:#b2864c">데이터베이스<small>ML614</small></b>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="CardCaption"><b>내 시간표.</b> 실제 수강 시간표를 불러와 주간·목록으로 보고, 다음 수업은 홈에서 먼저 알려 줘요.</p>
+                    </li>
+                    <li class="Card">
+                        <div class="CardVisual">
+                            <div class="Frag">
+                                <div class="ACard AGrade">
+                                    <p class="AHead"><small>누적 평점</small><b class="isBig">4.12<span> / 4.5</span></b>
+                                    </p>
+                                    <ul>
+                                        <li><span>2026학년도 1학기</span><b>4.21</b></li>
+                                        <li><span>2025학년도 2학기</span><b>4.05</b></li>
+                                        <li><span>2025학년도 1학기</span><b>3.98</b></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="CardCaption"><b>성적 조회.</b> 학기별·과목별 성적과 이번 학기 성적을 한눈에 확인해요.</p>
+                    </li>
+                    <li class="Card">
+                        <div class="CardVisual">
+                            <div class="Frag">
+                                <div class="ACard ASleepout">
+                                    <p class="AHead"><b>11월</b><small>외박 신청</small></p>
+                                    <span class="AWeek"><i>일</i><i>월</i><i>화</i><i>수</i><i>목</i><i>금</i><i>토</i></span>
+                                    <span class="AWeek"><b>15</b><b>16</b><b>17</b><b>18</b><b class="isOn">19</b><b
+                                            class="isOn">20</b><b class="isOn">21</b></span>
+                                    <span class="AButton isWide">3일 외박 신청</span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="CardCaption"><b>외박 신청.</b> 여러 날짜를 한 번에 골라 신청하고, 결과와 내역도 바로 확인해요.</p>
+                    </li>
+                    <li class="Card">
+                        <div class="CardVisual">
+                            <div class="Frag">
+                                <div class="ACard ASlots">
+                                    <p class="AHead"><b>SRC 프로그램실</b><small>11월</small></p>
+                                    <div class="ARoomGrid">
+                                        <span class="ACorner"><small>날짜</small><small>교시</small></span><b class="isToday">17<small>화</small></b><b>18<small>수</small></b><b>19<small>목</small></b><b>20<small>금</small></b>
+                                        <em>03</em><i class="isTaken">SR</i><i class="isTaken">SR</i><i></i><i class="isTaken">SR</i>
+                                        <em>04</em><i class="isTaken">SR</i><i class="isOn">선택</i><i class="isTaken">SR</i><i></i>
+                                        <em>05</em><i></i><i class="isTaken">MC</i><i></i><i class="isTaken">MC</i>
+                                    </div>
+                                    <ul class="ARoomLegend"><li>신청 가능</li><li class="isTaken">예약됨</li><li class="isOn">선택됨</li></ul>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="CardCaption"><b>시설 예약.</b> 생활관 프로그램실의 빈 교시를 보고 바로 예약하거나 취소해요.</p>
+                    </li>
+                </ul>
+                <div class="CardControls"><button type="button" class="Arrow" data-prev aria-label="이전"><svg
+                            class="Icon" aria-hidden="true">
+                            <use href="#i-chevron-left"></use>
+                        </svg></button><button type="button" class="Arrow" data-next aria-label="다음"><svg class="Icon"
+                            aria-hidden="true">
+                            <use href="#i-chevron-right"></use>
+                        </svg></button></div>
+            </div>
+        </section>
+
+        <!-- 그 밖의 다양한 기능 -->
+        <section class="More">
+            <h2 class="MoreTitle Reveal">더 살펴보기.</h2>
+            <ul class="MoreGrid">
+                <li class="Reveal"><i style="--tint: var(--indigo)"><svg class="Icon" aria-hidden="true">
+                            <use href="#i-books"></use>
+                        </svg></i>
+                    <p><b>도서관 FAQ·Q&amp;A.</b> 대출 연장은 어떻게 하는지, 열람실은 언제까지 여는지. 도서관 공지는 물론 자주 묻는 질문과 질의응답까지 이제 한곳에서 찾아볼 수 있어요. 도서관 홈페이지를 뒤적일 필요 없이, 궁금한 바로 그 순간 손안에서 답을 만나 보세요.</p>
+                </li>
+                <li class="Reveal"><i style="--tint: var(--green)"><svg class="Icon" aria-hidden="true">
+                            <use href="#i-checkbox"></use>
+                        </svg></i>
+                    <p><b>점호 마일리지.</b> 생활관에서 보낸 하루하루가 그대로 기록으로 남아요. 학년도와 학기를 고르면 점호 기록과 환산 마일리지가 한눈에 정리되고, 월별 기록을 펼쳐 날짜별로 꼼꼼히 확인할 수도 있죠. 다음 학기 생활관 신청을 앞두고 있다면, 내 마일리지를 미리 챙겨 보세요.</p>
+                </li>
+                <li class="Reveal"><i style="--tint: var(--blue)"><svg class="Icon" aria-hidden="true">
+                            <use href="#i-id-badge-2"></use>
+                        </svg></i>
+                    <p><b>학적·장학·등록.</b> 이제 학적을 확인하려고 PC 앞에 앉지 않아도 돼요. Windows PC에서만 열리던 종합정보시스템의 학적 정보와 변동 이력, 장학금, 등록 내역을 휴대폰 한 화면에 모아 정리해 보여 줘요. 강의실에서도, 버스 안에서도, 확인이 필요한 그 순간 바로 열어 볼 수 있죠.</p>
+                </li>
+                <li class="Reveal"><i style="--tint: var(--orange)"><svg class="Icon" aria-hidden="true">
+                            <use href="#i-search"></use>
+                        </svg></i>
+                    <p><b>공지 검색.</b> 제목이 기억나지 않아도 괜찮아요. 떠오르는 단어 하나만 입력하면 공지 본문 속까지 샅샅이 살펴 원하는 공지를 찾아 줘요. 게시판을 골라 범위를 좁히면, 찾던 소식이 더욱 빠르게 눈앞에 나타나죠.</p>
+                </li>
+                <li class="Reveal"><i style="--tint: var(--pink)"><svg class="Icon" aria-hidden="true">
+                            <use href="#i-palette"></use>
+                        </svg></i>
+                    <p><b>시간표 테마.</b> 매일 들여다보는 시간표, 이제 나만의 색으로 물들여 보세요. 과목마다 원하는 색을 입혀 나만의 테마를 만들고, 마음에 드는 테마는 친구와 함께 나눌 수 있어요. 같은 과목은 요일이 달라도 같은 색으로 이어져, 일주일이 한층 선명하게 읽히죠.</p>
+                </li>
+                <li class="Reveal"><i style="--tint: var(--gray)"><svg class="Icon" aria-hidden="true">
+                            <use href="#i-moon"></use>
+                        </svg></i>
+                    <p><b>다크 모드.</b> 낮에는 산뜻하게, 밤에는 차분하게. 기기 설정에 맞춰 밝은 화면과 어두운 화면이 자연스럽게 바뀌어요. 늦은 밤 침대에서 내일 시간표를 확인할 때도, 눈부심 없이 편안하게 볼 수 있죠.</p>
+                </li>
+            </ul>
+        </section>
+
+        <!-- 출시 예정 -->
+        <section class="Download" id="download">
+            <div class="DownloadPanel Reveal">
+                <span class="AppTile isSmall"><img src="./resources/images/app-icon.png" alt="" width="96"
+                        height="96"></span>
+                <h2 class="DownloadTitle">출시되면<br>가장 먼저 알려 드릴게요.</h2>
+                <p class="DownloadNote">이메일과 사용하는 기기만 알려 주세요.<br>출시 알림을 보내드릴게요.</p>
+                <a class="Button isPrimary isPill" href="https://naver.me/Fc6l1Zgi" data-preregister>사전 예약하기</a>
+                <p class="Platforms"><span><svg class="Icon" aria-hidden="true">
+                            <use href="#i-logo-apple"></use>
+                        </svg>iOS</span><span class="PlatformDot" aria-hidden="true">·</span><span><svg class="Icon" aria-hidden="true">
+                            <use href="#i-logo-android"></use>
+                        </svg>Android</span></p>
             </div>
         </section>
     </main>
