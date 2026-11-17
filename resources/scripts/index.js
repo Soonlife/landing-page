@@ -95,8 +95,11 @@ if (gallery) {
         for (const entry of entries) {
             if (entry.intersectionRatio > 0.6) {
                 current = slides.indexOf(entry.target);
-                dots.forEach((dot, index) => dot.toggleAttribute('aria-current', index === current));
-                dots[current].setAttribute('aria-current', 'true');
+                // 지금 점만 aria-current="true", 나머지는 속성을 지움 (중간에 빈 값이 끼면 너비가 잠깐 튐)
+                dots.forEach((dot, index) => {
+                    if (index === current) dot.setAttribute('aria-current', 'true');
+                    else dot.removeAttribute('aria-current');
+                });
                 schedule();
             }
         }

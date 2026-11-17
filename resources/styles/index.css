@@ -6,11 +6,12 @@
     Copyright © 2026 Js Na. All rights reserved.
 */
 
-/* 랜딩 페이지 공통 값. 색은 color.css의 토큰에서 파생해서 라이트/다크 모드를 따라감 */
+/* 랜딩 페이지 공통 값. 색은 color.css의 토큰에서 파생 (다크 모드 고정) */
 :root {
     --pageMaxWidth: 1120px;
     --pageGutter: clamp(20px, 5vw, 40px);
-    --sectionSpace: clamp(104px, 13vw, 168px);
+    /* 휴대폰 72px(약 화면 높이의 9%) → 데스크톱 168px. 104px이면 카드 아래 화살표까지 합쳐 섹션 사이 검은 여백이 170px 가까이 됨 */
+    --sectionSpace: clamp(72px, 13vw, 168px);
     --subText: color-mix(in srgb, var(--primaryText) 62%, transparent);
     /* 40%는 흰 바탕에서 2.85:1이라 4.5:1에 못 미침 → 58% (흰 바탕 5.33:1, #F2F2F7 위 4.78:1, 다크 #1C1C1E 위 5.68:1) */
     --faintText: color-mix(in srgb, var(--primaryText) 58%, transparent);
@@ -27,10 +28,9 @@
     scroll-padding-top: 64px;
 }
 
-@media (prefers-color-scheme: dark) {
-    :root {
-        --accentText: #2997ff;
-    }
+/* 다크 모드 고정 */
+:root {
+    --accentText: #2997ff;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -289,7 +289,11 @@ body {
     background: var(--stageBlack);
     color: #f5f5f7;
     text-align: center;
-    overflow: clip;
+    /* 가로만 자름(카드가 화면 밖으로 튀어 나가도 가로 스크롤 없음). 세로는 열어 둬서 아이콘 아래 빛이 다음 구역까지 이어짐 */
+    position: relative;
+    z-index: 1;
+    overflow-x: clip;
+    overflow-y: visible;
 }
 
 .HeroEyebrow {
@@ -393,7 +397,8 @@ body {
     position: relative;
     z-index: 2;
     width: clamp(140px, 18vw, 200px);
-    box-shadow: 0 30px 80px rgb(0 136 255 / 0.35);
+    /* 빛 색은 순라이프 primary(#26539C, 앱 blue 600). 원래 파랑보다 어두워서 진하기를 0.35 → 0.6으로 올림 */
+    box-shadow: 0 30px 80px rgb(38 83 156 / 0.6);
 }
 
 
@@ -656,34 +661,36 @@ body {
     background: #2c2c2e;
 }
 
-/* 보이는 점은 8px, 누르는 영역은 28×28 (HIG 최소 컨트롤 크기) */
+/* 보이는 점은 8px, 누르는 영역은 28×28 (HIG 최소 컨트롤 크기)
+   버튼 너비(28 → 56px)와 점 너비(버튼 - 20px = 8 → 36px)가 같은 곡선으로 함께 움직여서,
+   하나가 늘어나는 만큼 다른 하나가 줄어 전체 너비가 흔들리지 않음 */
 .GalleryDots button {
     display: grid;
     place-items: center;
-    min-width: 28px;
+    width: 28px;
     height: 28px;
     padding: 0;
     border: none;
     background: none;
     cursor: pointer;
+    transition: width 0.4s var(--easeOut);
 }
 
 .GalleryDots button::before {
     content: '';
-    width: 8px;
+    width: calc(100% - 20px);
     height: 8px;
     border-radius: 999px;
     background: #8e8e93;
-    transition: width 0.3s var(--easeOut), background-color 0.3s;
-}
-
-.GalleryDots button[aria-current='true']::before {
-    width: 40px;
-    background: #f5f5f7;
+    transition: background-color 0.4s var(--easeOut);
 }
 
 .GalleryDots button[aria-current='true'] {
-    min-width: 52px;
+    width: 56px;
+}
+
+.GalleryDots button[aria-current='true']::before {
+    background: #f5f5f7;
 }
 
 /* 자동 넘김 멈춤 · 다시 재생 */
@@ -725,6 +732,12 @@ body {
     font-size: clamp(1.0625rem, 1rem + 0.3vw, 1.3125rem);
     font-weight: 600;
     color: var(--primaryText);
+}
+
+/* 서비스 이름(순맵·순버스·순라이프 AI)은 첫 화면과 같은 산토끼체 워드마크로 */
+.BlockEyebrow.isWordmark {
+    font-size: clamp(1.5rem, 1.2rem + 1.2vw, 2rem);
+    line-height: 1.2;
 }
 
 .BlockTitle {
@@ -862,21 +875,20 @@ body {
     text-align: left;
 }
 
-@media (prefers-color-scheme: dark) {
-    .Frag {
-        --a-primary: #4c9fff;
-        --a-onPrimary: #212529;
-        --a-subtle: #0f2247;
-        --a-surface: #1a1a1d;
-        --a-overlay: #343a40;
-        --a-inverse: #fafafa;
-        --a-onInverse: #212529;
-        --a-strong: #fafafa;
-        --a-normal: #f8f9fa;
-        --a-neutral: #ced4da;
-        --a-alt: #adb5bd;
-        --a-line: #343a40;
-    }
+/* 다크 모드 고정 */
+.Frag {
+    --a-primary: #4c9fff;
+    --a-onPrimary: #212529;
+    --a-subtle: #0f2247;
+    --a-surface: #2f2f32;
+    --a-overlay: #343a40;
+    --a-inverse: #fafafa;
+    --a-onInverse: #212529;
+    --a-strong: #fafafa;
+    --a-normal: #f8f9fa;
+    --a-neutral: #ced4da;
+    --a-alt: #adb5bd;
+    --a-line: #343a40;
 }
 
 .SlideVisual .Frag {
@@ -1135,9 +1147,10 @@ body {
 
 /* 카드에서는 세로 비율 캡처로 여백 없이 꽉 채움 */
 @media (max-width: 640px) {
+    /* 안의 앱 카드도 여백 16px이 있어 24px이면 겹여백이 40px. 20px로 줄이고 높이를 더해 전체 348px 유지 */
     .CardVisual {
-        height: 300px;
-        padding: 24px;
+        height: 308px;
+        padding: 20px;
     }
 }
 
@@ -1539,10 +1552,9 @@ img.IndoorShot.isLarge {
     background: currentColor;
 }
 
-@media (prefers-color-scheme: dark) {
-    .ACat {
-        color: color-mix(in srgb, var(--cat) 55%, #fff);
-    }
+/* 다크 모드 고정 */
+.ACat {
+    color: color-mix(in srgb, var(--cat) 55%, #fff);
 }
 
 /* D-day (앱 홈의 학사 일정 카드) */
@@ -1976,6 +1988,47 @@ img.IndoorShot.isLarge {
     font-size: 1.0625rem;
     font-weight: 700;
     color: var(--accentText);
+}
+
+/* 휴대폰 여백 정리: 한 열로 쌓이면 데스크톱 간격이 그대로 길이로 쌓이므로 한 단계씩 줄임 */
+@media (max-width: 640px) {
+    .Cards {
+        margin-top: 32px;
+    }
+
+    .CardCaption {
+        margin-top: 16px;
+    }
+
+    .CardControls {
+        margin-top: 20px;
+    }
+
+    .MoreGrid {
+        gap: 32px;
+        margin-top: 32px;
+    }
+
+    .MoreGrid li {
+        gap: 12px;
+    }
+
+    .DownloadPanel {
+        padding: 44px 20px;
+        border-radius: 24px;
+    }
+
+    .DownloadTitle {
+        margin: 20px 0 20px;
+    }
+
+    .Platforms {
+        margin-top: 28px;
+    }
+
+    .SiteFooter {
+        padding: 40px var(--pageGutter) 48px;
+    }
 }
 
 /* 스크롤해서 화면에 들어오면 부드럽게 드러남. index.js가 html에 hasReveal을 붙인 경우에만 숨겨 둠 */
