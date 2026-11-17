@@ -1673,9 +1673,12 @@ img.IndoorShot.isLarge {
 }
 
 /* 외박 신청 */
+/* 칸은 minmax(0, 1fr)로 7등분 고정. 1fr만 쓰면 Safari에서 aspect-ratio 동그라미의 최소 크기만큼 칸이 늘어나 카드 밖으로 밀려남 */
 .AWeek {
     display: grid;
-    grid-template-columns: repeat(7, 1fr);
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    align-items: center;
+    justify-items: center;
     text-align: center;
 }
 
@@ -1688,8 +1691,11 @@ img.IndoorShot.isLarge {
 .AWeek b {
     display: grid;
     place-items: center;
+    box-sizing: border-box;
+    width: calc(100% - 4px);
+    max-width: 36px;
     aspect-ratio: 1;
-    margin: 2px;
+    margin: 2px 0;
     border-radius: 50%;
     font-size: 14px;
     font-weight: 500;
