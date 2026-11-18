@@ -1547,13 +1547,6 @@ img.IndoorShot.isLarge {
     color: var(--cat);
 }
 
-.ACat::before {
-    content: '';
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: currentColor;
-}
 
 /* 다크 모드 고정 */
 .ACat {
