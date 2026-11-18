@@ -487,3 +487,58 @@ if (searchBoxes.length && !matchMedia('(prefers-reduced-motion: reduce)').matche
         searchObserver.observe(box);
     });
 }
+
+// 순라이프 AI 답변: 화면에 들어오면 답변이 어절 단위로 차례로 생성되듯 나타남 (움직임은 CSS animation)
+// JS는 글자를 어절마다 <span class="Token">으로 나누고 순서(--i)만 매김. 화면에서 나가면 다시 처음부터
+const streams = document.querySelectorAll('[data-stream]');
+if (streams.length && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const tokenize = (root) => {
+        let index = 0;
+        const walk = (node) => {
+            for (const child of [...node.childNodes]) {
+                if (child.nodeType === Node.TEXT_NODE) {
+                    const parts = child.textContent.split(/(\s+)/);
+                    const fragment = document.createDocumentFragment();
+                    for (const part of parts) {
+                        if (!part) continue;
+                        if (/^\s+$/.test(part)) {
+                            fragment.append(part);
+                        } else {
+                            const token = document.createElement('span');
+                            token.className = 'Token';
+                            token.style.setProperty('--i', index++);
+                            token.textContent = part;
+                            fragment.append(token);
+                        }
+                    }
+                    child.replaceWith(fragment);
+                } else if (child.nodeType === Node.ELEMENT_NODE) {
+                    if (child.tagName === 'IMG') child.style.setProperty('--i', index++);
+                    else walk(child);
+                }
+            }
+        };
+        walk(root);
+    };
+
+    const streamObserver = new IntersectionObserver((entries) => {
+        for (const entry of entries) {
+            const stream = entry.target;
+            if (entry.isIntersecting) {
+                stream.classList.remove('isStreaming');
+                void stream.offsetWidth;
+                stream.classList.add('isStreaming');
+            } else {
+                stream.classList.remove('isStreaming');
+            }
+        }
+    }, { threshold: 0.6 });
+
+    streams.forEach((stream) => {
+        // 화면 낭독기는 나뉜 조각 대신 원래 문장을 한 번에 읽음
+        stream.setAttribute('aria-label', stream.textContent.replace(/\s+/g, ' ').trim());
+        tokenize(stream);
+        stream.classList.add('isStreamReady');
+        streamObserver.observe(stream);
+    });
+}

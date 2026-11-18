@@ -1992,6 +1992,33 @@ img.IndoorShot.isLarge {
     color: var(--accentText);
 }
 
+/* 순라이프 AI 답변이 생성되듯 어절마다 흐릿하게 떠오름 (index.js가 Token으로 나누고 isStreaming을 붙임)
+   자리는 처음부터 차지하고 있어서 글이 나타나는 동안 카드 모양이 흔들리지 않음 */
+.isStreamReady .Token,
+.isStreamReady .AShot {
+    opacity: 0;
+}
+
+.isStreaming .Token {
+    animation: TokenIn 0.5s var(--easeOut) calc(0.35s + var(--i) * 0.06s) both;
+}
+
+.isStreaming .AShot {
+    animation: TokenIn 0.7s var(--easeOut) calc(0.45s + var(--i) * 0.06s) both;
+}
+
+@keyframes TokenIn {
+    from {
+        opacity: 0;
+        filter: blur(4px);
+    }
+
+    to {
+        opacity: 1;
+        filter: none;
+    }
+}
+
 /* 휴대폰 여백 정리: 한 열로 쌓이면 데스크톱 간격이 그대로 길이로 쌓이므로 한 단계씩 줄임 */
 @media (max-width: 640px) {
     .Cards {
