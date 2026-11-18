@@ -812,6 +812,15 @@ body {
     padding: 0 var(--pageGutter);
 }
 
+/* 카드가 모두 보여 넘길 게 없을 때 (index.js가 isAllVisible과 hidden을 붙임): 화살표를 숨기고 옆으로도 밀리지 않게 */
+.CardControls[hidden] {
+    display: none;
+}
+
+.isAllVisible .CardTrack {
+    overflow-x: hidden;
+}
+
 .Arrow {
     display: grid;
     place-items: center;

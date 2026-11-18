@@ -159,13 +159,22 @@ if (gallery) {
 }
 
 // 기능 카드: 화살표로 한 장씩 넘기고, 끝에 닿으면 화살표를 흐리게
+// 화면이 넓어 카드가 모두 한 번에 보이면(넘길 게 없으면) 화살표 자체를 숨김
 document.querySelectorAll('[data-cards]').forEach((cards) => {
     const track = cards.querySelector('.CardTrack');
+    const controls = cards.querySelector('.CardControls');
     const prev = cards.querySelector('[data-prev]');
     const next = cards.querySelector('[data-next]');
     const step = () => track.firstElementChild.getBoundingClientRect().width + 20;
 
     function update() {
+        // 줄 오른쪽 여백은 빼고, 마지막 카드의 오른쪽 끝이 화면 안에 들어오는지로 판단
+        const trackLeft = track.getBoundingClientRect().left - track.scrollLeft;
+        const lastRight = track.lastElementChild.getBoundingClientRect().right - trackLeft;
+        const fits = lastRight <= track.clientWidth + 4;
+        cards.classList.toggle('isAllVisible', fits);
+        controls.hidden = fits;
+        if (fits && track.scrollLeft) track.scrollLeft = 0;
         prev.disabled = track.scrollLeft <= 4;
         next.disabled = track.scrollLeft + track.clientWidth >= track.scrollWidth - 4;
     }
@@ -173,7 +182,8 @@ document.querySelectorAll('[data-cards]').forEach((cards) => {
     prev.addEventListener('click', () => track.scrollBy({ left: -step(), behavior: 'smooth' }));
     next.addEventListener('click', () => track.scrollBy({ left: step(), behavior: 'smooth' }));
     track.addEventListener('scroll', update, { passive: true });
-    addEventListener('resize', update);
+    // 창 크기뿐 아니라 글꼴·이미지가 늦게 들어와 카드 폭이 바뀌어도 다시 계산
+    new ResizeObserver(update).observe(track);
     update();
 });
 
